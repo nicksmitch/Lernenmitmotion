@@ -9,7 +9,7 @@ import { Brain, LogOut, Play, Pause, Coffee, Heart, TrendingUp, Clock, Settings 
 import { toast } from 'sonner';
 import ExerciseModal from '../components/ExerciseModal';
 import RoleSelector from '../components/RoleSelector';
-import SpotifyPlayer from '../components/SpotifyPlayer';
+import SpotifyPlayer from '../components/SpotifyPlayerCompact';
 
 const STORAGE_KEYS = {
   STATS: 'focusflow_stats',
