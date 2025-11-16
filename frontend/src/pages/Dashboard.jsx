@@ -207,11 +207,11 @@ const Dashboard = () => {
 
         <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Timer Section */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             <Card data-testid="timer-card" className="glass border-emerald-200">
               <CardHeader>
-                <CardTitle className="text-2xl text-emerald-900">Lern-Timer</CardTitle>
-                <CardDescription>Stelle deine gewünschte Lerndauer ein</CardDescription>
+                <CardTitle className="text-xl sm:text-2xl text-emerald-900">Lern-Timer</CardTitle>
+                <CardDescription className="text-sm sm:text-base">Stelle deine gewünschte Lerndauer ein</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 {!isRunning ? (
