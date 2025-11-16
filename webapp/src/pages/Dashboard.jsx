@@ -91,12 +91,15 @@ const Dashboard = () => {
   };
 
   const stopTimer = () => {
-    if (isRunning) {
-      const studiedMinutes = Math.floor((timerDuration * 60 - timeLeft) / 60);
+    if (isRunning || timeLeft === 0) {
+      // Calculate actual studied time
+      const actualStudiedTime = timeLeft === 0 
+        ? timerDuration // Full duration if timer completed
+        : Math.floor((timerDuration * 60 - timeLeft) / 60); // Partial if stopped early
       
       const updatedStats = {
         ...stats,
-        totalStudyMinutes: stats.totalStudyMinutes + studiedMinutes,
+        totalStudyMinutes: stats.totalStudyMinutes + actualStudiedTime,
         totalBreaks: stats.totalBreaks + breaksThisSession
       };
       saveStats(updatedStats);
@@ -105,8 +108,9 @@ const Dashboard = () => {
       setIsPaused(false);
       setTimeLeft(0);
       setBreaksThisSession(0);
+      setShowTimerComplete(false);
       
-      toast.success('Lernphase beendet!');
+      toast.success(`Session beendet! +${actualStudiedTime} Minuten`);
     }
   };
 
