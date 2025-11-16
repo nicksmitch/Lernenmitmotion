@@ -96,6 +96,9 @@ class StudySessionUpdate(BaseModel):
 class TimerUpdate(BaseModel):
     duration_minutes: int
 
+class RoleUpdate(BaseModel):
+    role: str  # individual or teacher
+
 class ExerciseGenerate(BaseModel):
     category: str
     title: str
