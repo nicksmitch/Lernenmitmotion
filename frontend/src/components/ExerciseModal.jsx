@@ -237,8 +237,22 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
                 </div>
               )}
 
-              <div className="bg-emerald-50 rounded-xl p-4 sm:p-6">
-                <h4 className="font-semibold text-emerald-900 mb-3 text-sm sm:text-base">Anleitung:</h4>
+              <div className={`rounded-xl p-4 sm:p-6 transition-all ${
+                isReading 
+                  ? 'bg-gradient-to-br from-emerald-100 to-teal-100 ring-2 ring-emerald-400' 
+                  : 'bg-emerald-50'
+              }`}>
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-semibold text-emerald-900 text-sm sm:text-base">
+                    Anleitung:
+                  </h4>
+                  {isReading && (
+                    <span className="flex items-center text-xs sm:text-sm text-emerald-700 animate-pulse">
+                      <Volume2 className="w-4 h-4 mr-1" />
+                      Wird vorgelesen...
+                    </span>
+                  )}
+                </div>
                 <div className="space-y-2 text-emerald-800 text-sm sm:text-base">
                   {currentExercise.description.split('\n').map((line, index) => (
                     <p key={index} className="leading-relaxed">{line}</p>
