@@ -202,10 +202,11 @@ webapp/
 
 ## Datenschutz
 
-- Alle Daten werden nur lokal gespeichert (LocalStorage)
-- Keine Server-Kommunikation
+- Benutzer-Authentifizierung über Supabase (DSGVO-konform)
+- Statistiken werden lokal gespeichert (LocalStorage)
 - Keine Tracking-Tools
-- Keine externe Datenübertragung
+- Sichere Token-basierte Session-Verwaltung
+- E-Mail wird nur für Login verwendet
 
 ## Troubleshooting
 
