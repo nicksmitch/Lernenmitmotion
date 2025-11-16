@@ -65,8 +65,81 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
   };
 
   const handleNext = () => {
+    stopReading();
     fetchExercises();
   };
+
+  const startReading = () => {
+    if (!currentExercise) return;
+    
+    // Check if browser supports speech synthesis
+    if (!('speechSynthesis' in window)) {
+      toast.error('Dein Browser unterstützt keine Sprachausgabe');
+      return;
+    }
+
+    // Stop any ongoing speech
+    window.speechSynthesis.cancel();
+
+    // Prepare text
+    const textToRead = `${currentExercise.title}. 
+    Dauer: ${currentExercise.duration_minutes} Minuten. 
+    Anleitung: ${currentExercise.description}`;
+
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = 'de-DE';
+    utterance.rate = 0.9; // Slightly slower for better understanding
+    utterance.pitch = 1.0;
+
+    // Try to find a German voice
+    const voices = window.speechSynthesis.getVoices();
+    const germanVoice = voices.find(voice => voice.lang.startsWith('de'));
+    if (germanVoice) {
+      utterance.voice = germanVoice;
+    }
+
+    utterance.onstart = () => {
+      setIsReading(true);
+      toast.success('Vorlesen gestartet');
+    };
+
+    utterance.onend = () => {
+      setIsReading(false);
+      toast.info('Vorlesen beendet');
+    };
+
+    utterance.onerror = (event) => {
+      setIsReading(false);
+      console.error('Speech error:', event);
+      toast.error('Fehler beim Vorlesen');
+    };
+
+    speechSynthRef.current = utterance;
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const stopReading = () => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      setIsReading(false);
+      toast.info('Vorlesen gestoppt');
+    }
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  // Stop reading when exercise changes
+  useEffect(() => {
+    stopReading();
+    setImageError(false);
+  }, [currentExercise]);
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
