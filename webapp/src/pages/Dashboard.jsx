@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import ExerciseModal from '../components/ExerciseModal';
 import RoleSelector from '../components/RoleSelector';
 import SpotifyPlayer from '../components/SpotifyPlayerCompact';
+import TimerCompleteModal from '../components/TimerCompleteModal';
 
 const STORAGE_KEYS = {
   STATS: 'focusflow_stats',
