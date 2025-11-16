@@ -76,6 +76,153 @@ export const exercises = [
     is_group_exercise: false
   },
   
+  {
+    id: '6',
+    category: 'active',
+    title: 'Armkreisen',
+    description: '1. Stehe mit Füßen schulterbreit auseinander.\n2. Strecke beide Arme seitlich aus (T-Position).\n3. Mache kleine Kreise vorwärts für 30 Sekunden.\n4. Mache kleine Kreise rückwärts für 30 Sekunden.\n5. Vergrößere die Kreise - vorwärts 30 Sekunden.\n6. Große Kreise rückwärts 30 Sekunden.\n7. Schüttle die Arme aus.\n\nVorteile: Lockert Schultern, verbessert Durchblutung in Armen.',
+    duration_minutes: 3,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '7',
+    category: 'active',
+    title: 'Auf der Stelle Joggen',
+    description: '1. Stehe aufrecht mit lockeren Armen.\n2. Beginne auf der Stelle zu joggen.\n3. Hebe die Knie etwa hüfthoch.\n4. Schwinge die Arme mit.\n5. Steigere das Tempo nach 1 Minute.\n6. Jogge 3-4 Minuten im angenehmen Tempo.\n7. Langsam auslaufen lassen.\n\nVorteile: Aktiviert Herz-Kreislauf, erhöht Energie, verbessert Durchblutung.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '8',
+    category: 'active',
+    title: 'Planks (Unterarmstütz)',
+    description: '1. Gehe in den Vierfüßlerstand.\n2. Stütze dich auf die Unterarme.\n3. Strecke die Beine nach hinten aus.\n4. Halte deinen Körper gerade wie ein Brett.\n5. Spanne Bauch und Po an.\n6. Halte 20-30 Sekunden.\n7. Pause 15 Sekunden, wiederhole 3-4 Mal.\n\nVorteile: Stärkt Rumpfmuskulatur, verbessert Körperstabilität, Haltung.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '9',
+    category: 'active',
+    title: 'Seitliche Ausfallschritte',
+    description: '1. Stehe mit weitem Stand.\n2. Verlagere Gewicht auf das rechte Bein und beuge es.\n3. Das linke Bein bleibt gestreckt.\n4. Drücke dich zurück zur Mitte.\n5. Wechsle die Seite.\n6. 10 Wiederholungen pro Seite.\n7. Mache 3 Sätze.\n\nVorteile: Trainiert Oberschenkelinnenseite, verbessert seitliche Mobilität.',
+    duration_minutes: 5,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '10',
+    category: 'active',
+    title: 'Bergsteiger (Mountain Climbers)',
+    description: '1. Starte in Liegestütz-Position.\n2. Ziehe rechtes Knie zur Brust.\n3. Springe und wechsle die Beine in der Luft.\n4. Ziehe linkes Knie zur Brust.\n5. Wechsle schnell die Beine im Rhythmus.\n6. Mache 30 Sekunden, Pause, wiederhole.\n7. 3-4 Durchgänge.\n\nVorteile: Ganzkörpertraining, verbessert Kondition und Koordination.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '11a',
+    category: 'active',
+    title: 'Handgelenk- und Fingerübungen',
+    description: '1. Strecke beide Arme nach vorne.\n2. Mache Fäuste und öffne sie wieder (10x).\n3. Kreise mit den Handgelenken - 10x jede Richtung.\n4. Spreize alle Finger weit auseinander.\n5. Berühre jeden Finger mit dem Daumen.\n6. Schüttle die Hände locker aus.\n7. Massiere kurz die Handflächen.\n\nVorteile: Wichtig nach langem Schreiben/Tippen, beugt RSI vor.',
+    duration_minutes: 3,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '12a',
+    category: 'active',
+    title: 'Treppensteigen Simulation',
+    description: '1. Stelle einen stabilen Hocker oder Stufe bereit.\n2. Steige mit rechtem Fuß hinauf.\n3. Ziehe linken Fuß nach.\n4. Steige rechts wieder herunter.\n5. Steige links wieder herunter.\n6. Wechsle das Führbein nach 30 Sekunden.\n7. 3-4 Minuten im Wechsel.\n\nVorteile: Simuliert Treppensteigen, stärkt Beine und Po.',
+    duration_minutes: 5,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '13a',
+    category: 'active',
+    title: 'Seitliche Rumpfbeugen',
+    description: '1. Stehe mit Füßen hüftbreit.\n2. Hebe rechten Arm über den Kopf.\n3. Beuge den Oberkörper zur linken Seite.\n4. Halte 10 Sekunden.\n5. Komme zurück zur Mitte.\n6. Wechsle die Seite.\n7. Je Seite 8-10 Wiederholungen.\n\nVorteile: Dehnt seitliche Rumpfmuskulatur, verbessert Flexibilität.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+
+  // INDIVIDUAL RELAXED EXERCISES (Extended)
+  {
+    id: '14a',
+    category: 'relaxed',
+    title: 'Box Breathing (4-4-4-4)',
+    description: '1. Setze dich bequem und schließe die Augen.\n2. Atme 4 Sekunden ein durch die Nase.\n3. Halte den Atem 4 Sekunden an.\n4. Atme 4 Sekunden aus durch den Mund.\n5. Halte 4 Sekunden mit leerer Lunge.\n6. Dies ist ein Zyklus.\n7. Wiederhole für 5-6 Minuten.\n\nVorteile: Beruhigt Nervensystem, reduziert Stress, verbessert Fokus.',
+    duration_minutes: 6,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '15a',
+    category: 'relaxed',
+    title: 'Sitzende Vorwärtsbeuge',
+    description: '1. Setze dich mit ausgestreckten Beinen.\n2. Atme tief ein und strecke die Arme nach oben.\n3. Atme aus und beuge dich langsam nach vorne.\n4. Greife zu deinen Füßen (so weit du kannst).\n5. Halte die Position 1-2 Minuten.\n6. Atme ruhig weiter.\n7. Komme langsam zurück.\n\nVorteile: Dehnt Rücken und Beinrückseite, sehr entspannend.',
+    duration_minutes: 5,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '16a',
+    category: 'relaxed',
+    title: 'Schulter-Nacken Entspannung',
+    description: '1. Setze dich aufrecht hin.\n2. Ziehe beide Schultern zu den Ohren hoch.\n3. Halte 5 Sekunden angespannt.\n4. Lasse sie plötzlich fallen und entspanne.\n5. Spüre die Entspannung.\n6. Wiederhole 8-10 Mal.\n7. Schließe mit tiefen Atemzügen.\n\nVorteile: Löst Verspannungen im Schulter-Nacken-Bereich.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '17a',
+    category: 'relaxed',
+    title: 'Wechselatmung (Nadi Shodhana)',
+    description: '1. Setze dich bequem mit geradem Rücken.\n2. Schließe mit dem rechten Daumen das rechte Nasenloch.\n3. Atme links ein.\n4. Schließe mit dem Ringfinger das linke Nasenloch.\n5. Öffne rechts und atme rechts aus.\n6. Atme rechts ein, wechsle, links aus.\n7. 5-7 Minuten üben.\n\nVorteile: Balanciert linke/rechte Gehirnhälfte, beruhigt.',
+    duration_minutes: 7,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '18a',
+    category: 'relaxed',
+    title: 'Kinderstellung (Yoga)',
+    description: '1. Knie dich hin, Gesäß auf den Fersen.\n2. Beuge dich nach vorne.\n3. Lege die Stirn auf dem Boden ab.\n4. Strecke die Arme nach vorne oder lege sie neben den Körper.\n5. Atme ruhig und tief.\n6. Halte 3-5 Minuten.\n7. Komme langsam zurück.\n\nVorteile: Sehr entspannend, dehnt Rücken, beruhigend.',
+    duration_minutes: 5,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '19a',
+    category: 'relaxed',
+    title: 'Geführte Muskelentspannung Kurzform',
+    description: '1. Lege dich bequem hin.\n2. Spanne für 5 Sek. die Füße an, dann entspannen.\n3. Spanne für 5 Sek. die Beine an, dann entspannen.\n4. Spanne für 5 Sek. den Po an, dann entspannen.\n5. Spanne für 5 Sek. den Bauch an, dann entspannen.\n6. Spanne für 5 Sek. die Arme an, dann entspannen.\n7. Genieße die totale Entspannung für 2 Minuten.\n\nVorteile: Schnelle Ganzkörper-Entspannung.',
+    duration_minutes: 5,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '20a',
+    category: 'relaxed',
+    title: 'Autogenes Training Kurzform',
+    description: '1. Lege dich entspannt hin.\n2. Sage innerlich: "Mein rechter Arm ist schwer".\n3. Wiederhole 3x, spüre die Schwere.\n4. "Mein rechter Arm ist warm" - 3x wiederholen.\n5. Mache dasselbe mit linkem Arm.\n6. Dann beide Beine.\n7. Abschluss: "Ich bin ganz ruhig".\n\nVorteile: Tiefe Entspannung durch Autosuggestion.',
+    duration_minutes: 6,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '21a',
+    category: 'relaxed',
+    title: 'Sitzende Meditation mit Mantra',
+    description: '1. Setze dich bequem im Schneidersitz.\n2. Schließe die Augen.\n3. Wähle ein Wort: "Ruhe", "Frieden" oder "Om".\n4. Wiederhole es innerlich im Rhythmus deines Atems.\n5. Bei Gedanken: zurück zum Mantra.\n6. 5-7 Minuten praktizieren.\n7. Öffne langsam die Augen.\n\nVorteile: Beruhigt Gedankenfluss, fördert innere Ruhe.',
+    duration_minutes: 7,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+
   // TEACHER GROUP EXERCISES - ACTIVE
   {
     id: '21',
