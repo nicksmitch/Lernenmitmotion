@@ -1,30 +1,70 @@
 # FocusFlow - Lern-App mit gesunden Pausen
 
-Eine vollständig clientseitige Web-App für Studierende und Schüler mit Timer-Funktion und wissenschaftlich fundierten Bewegungs- und Entspannungspausen.
+Eine moderne Web-App für Studierende und Schüler mit Benutzer-Authentifizierung, Timer-Funktion und wissenschaftlich fundierten Bewegungs- und Entspannungspausen.
 
 ## Features
 
 ✨ **Kern-Features:**
+- 🔐 Benutzer-Authentifizierung mit Supabase (E-Mail + Passwort)
 - 🕐 Individueller Lern-Timer (5-120 Minuten)
-- 🏃 27 Übungen (Aktiv & Entspannung)
+- 🏃 50 Übungen (Aktiv & Entspannung)
 - 👤 Rollen-System (Einzelnutzer & Lehrkräfte)
 - 🔊 Text-to-Speech Vorlese-Funktion
 - 🎵 Spotify Integration (Fokus-Musik während Lernen)
 - 📱 Responsive Design (Mobile, Tablet, Desktop)
-- 💾 LocalStorage für Datenpersistenz
+- 💾 LocalStorage für Statistiken
 
 ✨ **Übungen:**
-- **Einzelnutzer**: 9 aktive + 7 entspannende Übungen
-- **Lehrkräfte**: Zusätzlich 6 Gruppen-aktive + 5 Gruppen-entspannende Übungen
-- Alle mit detaillierten Anleitungen
+- **Einzelnutzer**: 15 aktive + 13 entspannende Übungen
+- **Lehrkräfte**: Zusätzlich 12 Gruppen-aktive + 10 Gruppen-entspannende Übungen
+- Alle mit detaillierten Anleitungen und Bildern
+
+## Supabase Authentication
+
+Diese App verwendet **Supabase** für sichere Benutzer-Authentifizierung.
+
+### Setup
+
+1. Erstelle ein kostenloses Supabase-Projekt auf [supabase.com](https://supabase.com)
+2. Kopiere deine **Project URL** und **anon/public key** aus den API-Einstellungen
+3. Setze die Environment-Variablen:
+
+**Lokale Entwicklung:**
+Erstelle eine `.env` Datei im `webapp` Ordner:
+```env
+VITE_SUPABASE_URL=deine_supabase_project_url
+VITE_SUPABASE_ANON_KEY=dein_supabase_anon_key
+```
+
+**Vercel Deployment:**
+Setze die Umgebungsvariablen im Vercel Dashboard:
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+### Supabase Auth Features
+
+- ✅ E-Mail + Passwort Registrierung
+- ✅ E-Mail + Passwort Login
+- ✅ E-Mail Bestätigung
+- ✅ Session Management
+- ✅ Automatische Token-Erneuerung
+- ✅ Logout Funktion
 
 ## Lokale Installation
 
 ```bash
 # Dependencies installieren
+yarn install
+# oder
 npm install
 
+# Environment-Variablen setzen (siehe Supabase Setup oben)
+cp .env.example .env
+# Dann .env mit deinen Supabase-Credentials ausfüllen
+
 # Development Server starten
+yarn dev
+# oder
 npm run dev
 
 # App öffnet sich auf http://localhost:5173
