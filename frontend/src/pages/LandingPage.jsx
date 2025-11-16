@@ -149,13 +149,13 @@ const FeatureCard = ({ icon, title, description }) => (
 );
 
 const StepCard = ({ number, title, description }) => (
-  <div className="flex items-start space-x-6">
-    <div className="flex-shrink-0 w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+  <div className="flex items-start space-x-4 sm:space-x-6">
+    <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg">
       {number}
     </div>
     <div>
-      <h3 className="text-2xl font-semibold text-emerald-900 mb-2">{title}</h3>
-      <p className="text-lg text-emerald-700">{description}</p>
+      <h3 className="text-xl sm:text-2xl font-semibold text-emerald-900 mb-2">{title}</h3>
+      <p className="text-base sm:text-lg text-emerald-700">{description}</p>
     </div>
   </div>
 );
