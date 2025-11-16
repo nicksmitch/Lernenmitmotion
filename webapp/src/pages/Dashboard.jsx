@@ -397,6 +397,14 @@ const Dashboard = () => {
         </div>
       </div>
 
+      {/* Timer Complete Modal */}
+      {showTimerComplete && (
+        <TimerCompleteModal
+          onTakeBreak={(category) => handleTimerCompleteAction(category)}
+          onContinue={() => handleTimerCompleteAction('continue')}
+        />
+      )}
+
       {/* Exercise Modal */}
       {showExerciseModal && (
         <ExerciseModal 
