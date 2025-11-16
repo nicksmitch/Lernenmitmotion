@@ -334,6 +334,136 @@ export const exercises = [
     duration_minutes: 3,
     roles: ['teacher'],
     is_group_exercise: true
+  },
+  {
+    id: '33b',
+    category: 'relaxed',
+    title: 'Fantasiereise als Gruppe',
+    description: 'Für ganze Klasse\n\n1. Alle legen sich entspannt hin oder setzen sich.\n2. Schließt die Augen.\n3. Lehrer liest langsam eine Fantasiereise vor.\n4. Z.B.: Strand, Wald, Wolkenreise.\n5. Beschreibt Geräusche, Gerüche, Gefühle.\n6. Nehmt euch 5-7 Minuten Zeit.\n7. Langsam zurück ins Hier und Jetzt.\n\nVorteile: Tiefe Entspannung, fördert Vorstellungskraft, gemeinsame Ruhe.',
+    duration_minutes: 7,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '34b',
+    category: 'relaxed',
+    title: 'Partnermassage Schultern',
+    description: 'Für Paare\n\n1. Bildet Paare, eine Person sitzt, eine steht.\n2. Stehende Person massiert sanft Schultern und Nacken.\n3. Verwendet kreisende Bewegungen.\n4. Fragt nach Druck (angenehm?).\n5. Nach 2-3 Minuten Rollentausch.\n6. Beide entspannen sich gegenseitig.\n7. Bedankt euch am Ende.\n\nVorteile: Entspannt Schulter-Nacken, fördert soziales Miteinander.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '35b',
+    category: 'relaxed',
+    title: 'Klangmeditation mit Gong/Klangschale',
+    description: 'Für ganze Klasse\n\n1. Alle liegen entspannt auf dem Boden.\n2. Schließt die Augen.\n3. Lehrer spielt Klangschale oder Gong.\n4. Konzentriert euch nur auf den Klang.\n5. Spürt die Vibrationen im Körper.\n6. Lasst den Klang durch euch fließen.\n7. 5-7 Minuten in Stille nachspüren.\n\nVorteile: Tiefenentspannung durch Klangvibrationen.',
+    duration_minutes: 7,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '36b',
+    category: 'relaxed',
+    title: 'Dankbarkeitskreis',
+    description: 'Für ganze Klasse\n\n1. Setzt euch in einen Kreis.\n2. Jeder überlegt sich 3 Dinge, für die er heute dankbar ist.\n3. Reihum teilt jeder eine Sache (freiwillig).\n4. Keine Kommentare, nur zuhören.\n5. Schließt die Augen nach der Runde.\n6. Atmet gemeinsam 3x tief.\n7. Spürt die positive Energie.\n\nVorteile: Fördert Dankbarkeit, positive Stimmung, Gemeinschaft.',
+    duration_minutes: 5,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '37b',
+    category: 'relaxed',
+    title: 'Körperreise in der Gruppe',
+    description: 'Für ganze Klasse\n\n1. Alle liegen entspannt auf dem Rücken.\n2. Lehrer leitet an: "Spürt eure Füße..."\n3. Wandert durch alle Körperteile von unten nach oben.\n4. "Entspannt bewusst jedes Teil."\n5. Füße → Beine → Rumpf → Arme → Kopf.\n6. Bleibt 1 Minute in Totalentspannung.\n7. Langsam bewegen und strecken.\n\nVorteile: Körperbewusstsein, tiefe Entspannung.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '38b',
+    category: 'relaxed',
+    title: 'Lachyoga Light',
+    description: 'Für ganze Klasse\n\n1. Steht im Kreis.\n2. Beginnt mit künstlichem Lachen "Ha ha ha".\n3. Macht dazu Bewegungen.\n4. Lachen wird ansteckend und echt.\n5. Verschiedene Lacharten ausprobieren.\n6. 3-4 Minuten lachen.\n7. Dann tiefes Atmen und entspannen.\n\nVorteile: Löst Anspannung, fördert Endorphine, macht Spaß!',
+    duration_minutes: 5,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '39b',
+    category: 'relaxed',
+    title: 'Achtsames Gehen im Raum',
+    description: 'Für ganze Klasse\n\n1. Alle gehen langsam durch den Raum.\n2. Konzentriert euch auf jeden Schritt.\n3. Spürt wie der Fuß den Boden berührt.\n4. Atmet bewusst beim Gehen.\n5. Kein Sprechen, nur Wahrnehmen.\n6. Nach 3 Minuten: noch langsamer.\n7. Bleibt dann stehen, spürt nach.\n\nVorteile: Achtsamkeit, Entschleunigung, Körperbewusstsein.',
+    duration_minutes: 5,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '40b',
+    category: 'relaxed',
+    title: 'Energie-Ball weitergeben',
+    description: 'Für ganze Klasse\n\n1. Steht oder sitzt im Kreis.\n2. Stellt euch vor, ihr haltet einen Energieball.\n3. Erste Person "formt" den Ball zwischen den Händen.\n4. Gibt ihn mit einer Bewegung weiter.\n5. Nächste Person nimmt ihn auf, spürt ihn.\n6. So geht der Ball reihum.\n7. Am Ende: Ball gemeinsam "auflösen".\n\nVorteile: Imaginationsübung, Verbundenheit, spielerische Entspannung.',
+    duration_minutes: 4,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  
+  // Additional INDIVIDUAL exercises for variety
+  {
+    id: '14b',
+    category: 'active',
+    title: 'Wand-Sit (Wandsitzen)',
+    description: '1. Stelle dich mit dem Rücken zur Wand.\n2. Rutsche mit dem Rücken an der Wand herunter.\n3. Beuge die Knie auf 90 Grad (wie auf einem Stuhl sitzend).\n4. Halte die Position 20-30 Sekunden.\n5. Pause 30 Sekunden.\n6. Wiederhole 3-4 Durchgänge.\n7. Steigere die Haltezeit langsam.\n\nVorteile: Stärkt Oberschenkelmuskulatur, Kraftausdauer.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '15b',
+    category: 'active',
+    title: 'Burpees (vereinfachte Version)',
+    description: '1. Stehe aufrecht.\n2. Gehe in die Hocke, Hände auf den Boden.\n3. Springe mit den Füßen nach hinten (Plank-Position).\n4. Optional: eine Liegestütze.\n5. Springe mit Füßen zurück zur Hocke.\n6. Springe hoch, Arme nach oben.\n7. 8-10 Wiederholungen, 3 Sätze.\n\nVorteile: Ganzkörpertraining, steigert Puls und Energie.',
+    duration_minutes: 5,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '22b',
+    category: 'relaxed',
+    title: 'Augenentspannung (Palmieren)',
+    description: '1. Setze dich bequem hin.\n2. Reibe deine Handflächen aneinander bis sie warm sind.\n3. Lege die warmen Handflächen sanft auf geschlossene Augen.\n4. Kein Druck, nur leichtes Auflegen.\n5. Genieße die Dunkelheit und Wärme.\n6. Atme ruhig für 2-3 Minuten.\n7. Nimm die Hände langsam weg, öffne die Augen.\n\nVorteile: Entspannt die Augen nach Bildschirmarbeit.',
+    duration_minutes: 4,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  {
+    id: '23b',
+    category: 'relaxed',
+    title: 'Bodyscan Kurzversion',
+    description: '1. Lege dich auf den Rücken, Arme neben dem Körper.\n2. Schließe die Augen.\n3. Spüre bewusst deine Füße - 20 Sekunden.\n4. Wandere zu den Unterschenkeln, dann Oberschenkeln.\n5. Bauch, Brust, Rücken.\n6. Arme, Hände, Finger.\n7. Hals, Kopf, Gesicht - überall entspannen.\n\nVorteile: Tiefe Körperwahrnehmung, mentale Entspannung.',
+    duration_minutes: 6,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },
+  
+  // More GROUP ACTIVE exercises
+  {
+    id: '35a',
+    category: 'active',
+    title: 'Stopptanz',
+    description: 'Für ganze Klasse\n\n1. Musik läuft, alle tanzen frei im Raum.\n2. Musik stoppt - alle frieren sofort ein.\n3. Haltet die Position wie Statuen.\n4. Wer sich bewegt, macht 3 Jumping Jacks.\n5. Musik startet wieder - weiter tanzen.\n6. 5-6 Runden spielen.\n7. Verschiedene Musikstile ausprobieren.\n\nVorteile: Bewegung, Reaktion, Körperkontrolle, Spaß.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '36a',
+    category: 'active',
+    title: 'Brückenbau Teamchallenge',
+    description: 'Für Teams zu 4-6 Personen\n\n1. Jedes Team bildet eine "Brücke" mit ihren Körpern.\n2. Beispiel: Alle in Plank nebeneinander.\n3. Oder: Kinder-Brücke (auf Händen/Füßen, Bauch nach oben).\n4. Ein leichter Gegenstand wird drüber balanciert.\n5. Haltet die Brücke 30 Sekunden.\n6. Welches Team hält am längsten?\n7. Verschiedene Brückenvarianten ausprobieren.\n\nVorteile: Kraft, Teamwork, Körperspannung, Koordination.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
   }
 ];
 
