@@ -154,8 +154,10 @@ webapp/
 
 ### Erster Start
 1. Klicke auf "Jetzt starten" oder "Anmelden"
-2. Gib einen Namen ein (Demo-Login)
-3. Wähle deine Rolle (Einzelnutzer oder Lehrkraft)
+2. Registriere dich mit E-Mail und Passwort
+3. Bestätige deine E-Mail (Check Posteingang)
+4. Logge dich ein
+5. Wähle deine Rolle (Einzelnutzer oder Lehrkraft) im Dashboard
 
 ### Timer nutzen
 1. Stelle Timer-Dauer ein (5-120 Minuten)
