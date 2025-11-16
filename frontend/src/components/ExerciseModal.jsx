@@ -319,7 +319,23 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
                   </Button>
                 </div>
                 
-                {/* Voice control hint for mobile */}
+                {/* Voice speed control */}
+                <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-emerald-700">
+                  <span>Vorlesegeschwindigkeit:</span>
+                  <select 
+                    value={voiceSpeed}
+                    onChange={(e) => setVoiceSpeed(parseFloat(e.target.value))}
+                    className="px-2 py-1 rounded border border-emerald-300 bg-white text-emerald-800 cursor-pointer"
+                    disabled={isReading}
+                  >
+                    <option value="0.75">Sehr langsam</option>
+                    <option value="0.85">Langsam (empfohlen)</option>
+                    <option value="1.0">Normal</option>
+                    <option value="1.1">Schnell</option>
+                  </select>
+                </div>
+                
+                {/* Voice control hint */}
                 <p className="text-xs sm:text-sm text-emerald-600 text-center">
                   💡 Tipp: Nutze den Lautsprecher-Button oben, um dir die Übung vorlesen zu lassen
                 </p>
