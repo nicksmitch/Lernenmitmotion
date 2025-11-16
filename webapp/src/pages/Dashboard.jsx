@@ -28,6 +28,7 @@ const Dashboard = () => {
   const [showExerciseModal, setShowExerciseModal] = useState(false);
   const [exerciseCategory, setExerciseCategory] = useState(null);
   const [showRoleSelector, setShowRoleSelector] = useState(false);
+  const [showTimerComplete, setShowTimerComplete] = useState(false);
 
   useEffect(() => {
     loadStats();
