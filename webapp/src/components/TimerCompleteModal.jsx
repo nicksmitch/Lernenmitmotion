@@ -7,9 +7,35 @@ const TimerCompleteModal = ({ onTakeBreak, onContinue }) => {
   const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
-    // Play notification sound
-    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZURE');
-    audio.play().catch(() => console.log('Audio autoplay blocked'));
+    // Play notification sound - longer and louder alert
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const playAlert = () => {
+      // Create oscillator for beep sound (3 beeps)
+      for (let i = 0; i < 3; i++) {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = 880; // A5 note - attention grabbing
+        oscillator.type = 'sine';
+        
+        const startTime = audioContext.currentTime + (i * 0.3);
+        gainNode.gain.setValueAtTime(0.3, startTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.2);
+        
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.2);
+      }
+    };
+    
+    playAlert();
+    
+    // Vibration if supported
+    if ('vibrate' in navigator) {
+      navigator.vibrate([200, 100, 200, 100, 200]);
+    }
 
     // Countdown
     const interval = setInterval(() => {
