@@ -9,6 +9,7 @@ Eine vollständig clientseitige Web-App für Studierende und Schüler mit Timer-
 - 🏃 27 Übungen (Aktiv & Entspannung)
 - 👤 Rollen-System (Einzelnutzer & Lehrkräfte)
 - 🔊 Text-to-Speech Vorlese-Funktion
+- 🎵 Spotify Integration (Fokus-Musik während Lernen)
 - 📱 Responsive Design (Mobile, Tablet, Desktop)
 - 💾 LocalStorage für Datenpersistenz
 
