@@ -194,9 +194,14 @@ const Dashboard = () => {
           </div>
         )}
 
-        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {/* Timer Section */}
-          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+        <div className="grid lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          {/* Timer & Music Section */}
+          <div className="lg:col-span-3 space-y-4 sm:space-y-6">
+            {/* Spotify Player - Above Timer */}
+            <SpotifyPlayer />
+            
+            {/* Timer Section */}
+            <div className="space-y-4 sm:space-y-6">
             <Card data-testid="timer-card" className="glass border-emerald-200">
               <CardHeader>
                 <CardTitle className="text-xl sm:text-2xl text-emerald-900">Lern-Timer</CardTitle>
