@@ -81,21 +81,39 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
     // Stop any ongoing speech
     window.speechSynthesis.cancel();
 
-    // Prepare text
+    // Prepare text - clean up newlines for better speech
+    const cleanDescription = currentExercise.description
+      .replace(/\n+/g, '. ')
+      .replace(/\.\s*\./g, '.')
+      .trim();
+    
     const textToRead = `${currentExercise.title}. 
     Dauer: ${currentExercise.duration_minutes} Minuten. 
-    Anleitung: ${currentExercise.description}`;
+    Anleitung: ${cleanDescription}`;
 
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'de-DE';
     utterance.rate = 0.9; // Slightly slower for better understanding
     utterance.pitch = 1.0;
+    utterance.volume = 1.0;
 
-    // Try to find a German voice
-    const voices = window.speechSynthesis.getVoices();
-    const germanVoice = voices.find(voice => voice.lang.startsWith('de'));
-    if (germanVoice) {
-      utterance.voice = germanVoice;
+    // Function to set voice (needed for some browsers)
+    const setVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+      const germanVoice = voices.find(voice => 
+        voice.lang.includes('de-DE') || voice.lang.includes('de')
+      );
+      if (germanVoice) {
+        utterance.voice = germanVoice;
+      }
+    };
+
+    // Try to get voices immediately
+    setVoice();
+    
+    // Also try after voices are loaded (needed for Chrome)
+    if (window.speechSynthesis.getVoices().length === 0) {
+      window.speechSynthesis.onvoiceschanged = setVoice;
     }
 
     utterance.onstart = () => {
