@@ -6,15 +6,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Progress } from '../components/ui/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { Slider } from '../components/ui/slider';
-import { Brain, LogOut, Play, Pause, Coffee, Heart, TrendingUp, Clock } from 'lucide-react';
+import { Brain, LogOut, Play, Pause, Coffee, Heart, TrendingUp, Clock, Settings } from 'lucide-react';
 import { toast } from 'sonner';
 import ExerciseModal from '../components/ExerciseModal';
+import RoleSelector from '../components/RoleSelector';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const Dashboard = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, setUser, logout } = useContext(AuthContext);
   const [stats, setStats] = useState(null);
   const [timerDuration, setTimerDuration] = useState(25);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -24,6 +25,7 @@ const Dashboard = () => {
   const [breaksThisSession, setBreaksThisSession] = useState(0);
   const [showExerciseModal, setShowExerciseModal] = useState(false);
   const [exerciseCategory, setExerciseCategory] = useState(null);
+  const [showRoleSelector, setShowRoleSelector] = useState(false);
 
   useEffect(() => {
     fetchStats();
@@ -72,7 +74,6 @@ const Dashboard = () => {
       setIsPaused(false);
       setBreaksThisSession(0);
       
-      // Save timer duration
       await axios.put(`${API}/stats/timer`, {
         duration_minutes: timerDuration
       }, {
@@ -133,6 +134,11 @@ const Dashboard = () => {
     }
   };
 
+  const handleRoleChange = (newRole) => {
+    setUser({ ...user, role: newRole });
+    setShowRoleSelector(false);
+  };
+
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -140,6 +146,8 @@ const Dashboard = () => {
   };
 
   const progress = timeLeft > 0 ? ((timerDuration * 60 - timeLeft) / (timerDuration * 60)) * 100 : 0;
+
+  const roleDisplay = user?.role === 'teacher' ? 'Lehrkraft' : 'Einzelnutzer';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
@@ -154,13 +162,25 @@ const Dashboard = () => {
               <span className="text-2xl font-bold text-emerald-900">FocusFlow</span>
             </div>
             <div className="flex items-center space-x-4">
+              <div className="hidden sm:flex flex-col items-end">
+                <span className="text-emerald-900 font-medium">{user?.name}</span>
+                <span className="text-xs text-emerald-600">{roleDisplay}</span>
+              </div>
               <Avatar>
                 <AvatarImage src={user?.picture} />
                 <AvatarFallback className="bg-emerald-600 text-white">
                   {user?.name?.charAt(0) || 'U'}
                 </AvatarFallback>
               </Avatar>
-              <span className="text-emerald-900 font-medium hidden sm:inline">{user?.name}</span>
+              <Button 
+                data-testid="settings-btn"
+                onClick={() => setShowRoleSelector(!showRoleSelector)}
+                variant="ghost"
+                size="icon"
+                className="text-emerald-700 hover:text-emerald-900"
+              >
+                <Settings className="w-5 h-5" />
+              </Button>
               <Button 
                 data-testid="logout-btn"
                 onClick={logout}
@@ -176,6 +196,15 @@ const Dashboard = () => {
       </header>
 
       <div className="container mx-auto px-4 py-8">
+        {showRoleSelector && (
+          <div className="mb-8">
+            <RoleSelector 
+              currentRole={user?.role || 'individual'}
+              onRoleChange={handleRoleChange}
+            />
+          </div>
+        )}
+
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Timer Section */}
           <div className="lg:col-span-2 space-y-6">
@@ -249,7 +278,12 @@ const Dashboard = () => {
             <Card className="glass border-emerald-200">
               <CardHeader>
                 <CardTitle className="text-2xl text-emerald-900">Pause benötigt?</CardTitle>
-                <CardDescription>Wähle zwischen aktiven oder entspannenden Übungen</CardDescription>
+                <CardDescription>
+                  {user?.role === 'teacher' 
+                    ? 'Wähle zwischen individuellen oder Gruppen-Übungen' 
+                    : 'Wähle zwischen aktiven oder entspannenden Übungen'
+                  }
+                </CardDescription>
               </CardHeader>
               <CardContent className="grid sm:grid-cols-2 gap-4">
                 <Button 
@@ -259,7 +293,9 @@ const Dashboard = () => {
                 >
                   <Coffee className="w-10 h-10" />
                   <span className="text-lg font-semibold">Aktive Pause</span>
-                  <span className="text-sm opacity-90">Bewegung & Energie</span>
+                  <span className="text-sm opacity-90">
+                    {user?.role === 'teacher' ? 'Bewegung & Gruppenspiele' : 'Bewegung & Energie'}
+                  </span>
                 </Button>
                 <Button 
                   data-testid="relaxed-break-btn"
@@ -268,7 +304,9 @@ const Dashboard = () => {
                 >
                   <Heart className="w-10 h-10" />
                   <span className="text-lg font-semibold">Entspannende Pause</span>
-                  <span className="text-sm opacity-90">Meditation & Ruhe</span>
+                  <span className="text-sm opacity-90">
+                    {user?.role === 'teacher' ? 'Gruppen-Entspannung' : 'Meditation & Ruhe'}
+                  </span>
                 </Button>
               </CardContent>
             </Card>
@@ -310,9 +348,14 @@ const Dashboard = () => {
 
             <Card className="glass border-emerald-200 bg-gradient-to-br from-emerald-100 to-teal-100">
               <CardContent className="pt-6">
-                <h3 className="font-semibold text-emerald-900 mb-2">Tipp des Tages</h3>
+                <h3 className="font-semibold text-emerald-900 mb-2">
+                  {user?.role === 'teacher' ? 'Tipp für Lehrkräfte' : 'Tipp des Tages'}
+                </h3>
                 <p className="text-sm text-emerald-700">
-                  Regelmäßige Pausen verbessern deine Konzentration und Produktivität. Versuche alle 25-50 Minuten eine kurze Pause einzulegen!
+                  {user?.role === 'teacher' 
+                    ? 'Gruppenübungen am Smartboard fördern Gemeinschaftsgefühl und machen mehr Spaß! Probiere die Partner-Koordinationsspiele aus.' 
+                    : 'Regelmäßige Pausen verbessern deine Konzentration und Produktivität. Versuche alle 25-50 Minuten eine kurze Pause einzulegen!'
+                  }
                 </p>
               </CardContent>
             </Card>
@@ -324,6 +367,7 @@ const Dashboard = () => {
       {showExerciseModal && (
         <ExerciseModal 
           category={exerciseCategory}
+          userRole={user?.role || 'individual'}
           onClose={() => setShowExerciseModal(false)}
           onComplete={onBreakComplete}
         />

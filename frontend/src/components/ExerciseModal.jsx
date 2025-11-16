@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { X, CheckCircle, Loader2 } from 'lucide-react';
+import { X, CheckCircle, Loader2, Users } from 'lucide-react';
 import { toast } from 'sonner';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const ExerciseModal = ({ category, onClose, onComplete }) => {
+const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
   const [exercises, setExercises] = useState([]);
   const [currentExercise, setCurrentExercise] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchExercises();
-  }, [category]);
+  }, [category, userRole]);
 
   const fetchExercises = async () => {
     try {
@@ -24,7 +24,7 @@ const ExerciseModal = ({ category, onClose, onComplete }) => {
       });
       
       if (response.data.length === 0) {
-        toast.info('Keine Übungen gefunden. Verwende Standard-Übung.');
+        toast.info('Keine Übungen gefunden.');
         setCurrentExercise(getDefaultExercise(category));
       } else {
         const randomExercise = response.data[Math.floor(Math.random() * response.data.length)];
@@ -43,13 +43,15 @@ const ExerciseModal = ({ category, onClose, onComplete }) => {
       return {
         title: 'Jumping Jacks',
         description: '1. Stehe aufrecht mit Füßen zusammen und Armen an den Seiten.\n2. Springe und spreize gleichzeitig deine Beine schulterbreit.\n3. Hebe gleichzeitig deine Arme über den Kopf.\n4. Springe zurück in die Ausgangsposition.\n5. Wiederhole für 3 Minuten in einem angenehmen Tempo.',
-        duration_minutes: 3
+        duration_minutes: 3,
+        is_group_exercise: false
       };
     } else {
       return {
         title: 'Atemübung 4-7-8',
-        description: '1. Setze dich bequem hin oder lege dich hin.\n2. Atme vollständig durch den Mund aus.\n3. Schließe den Mund und atme ruhig durch die Nase ein, zähle bis 4.\n4. Halte den Atem an und zähle bis 7.\n5. Atme vollständig durch den Mund aus, zähle bis 8.\n6. Wiederhole diesen Zyklus 4 Mal.\n7. Praktiziere für 5 Minuten.',
-        duration_minutes: 5
+        description: '1. Setze dich bequem hin oder lege dich hin.\n2. Atme vollständig durch den Mund aus.\n3. Schließe den Mund und atme ruhig durch die Nase ein, zähle bis 4.\n4. Halte den Atem an und zähle bis 7.\n5. Atme vollständig durch den Mund aus, zähle bis 8.\n6. Wiederhole diesen Zyklus 4 Mal.',
+        duration_minutes: 5,
+        is_group_exercise: false
       };
     }
   };
@@ -57,6 +59,10 @@ const ExerciseModal = ({ category, onClose, onComplete }) => {
   const handleComplete = () => {
     toast.success('Großartig! Pause abgeschlossen.');
     onComplete();
+  };
+
+  const handleNext = () => {
+    fetchExercises();
   };
 
   return (
@@ -76,7 +82,14 @@ const ExerciseModal = ({ category, onClose, onComplete }) => {
             {category === 'active' ? 'Aktive Pause' : 'Entspannende Pause'}
           </CardTitle>
           <CardDescription>
-            Folge der Anleitung für eine erholsame Pause
+            {currentExercise?.is_group_exercise ? (
+              <span className="flex items-center text-purple-600 font-medium">
+                <Users className="w-4 h-4 mr-1" />
+                Gruppen-/Partnerübung
+              </span>
+            ) : (
+              'Folge der Anleitung für eine erholsame Pause'
+            )}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -123,12 +136,12 @@ const ExerciseModal = ({ category, onClose, onComplete }) => {
                   Übung abgeschlossen
                 </Button>
                 <Button 
-                  data-testid="skip-exercise-btn"
-                  onClick={onClose}
+                  data-testid="next-exercise-btn"
+                  onClick={handleNext}
                   variant="outline"
                   className="flex-1 py-6 text-lg border-emerald-300 rounded-xl"
                 >
-                  Überspringen
+                  Andere Übung
                 </Button>
               </div>
             </>
