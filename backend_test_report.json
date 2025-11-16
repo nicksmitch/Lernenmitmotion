@@ -1,0 +1,99 @@
+{
+  "total_tests": 15,
+  "passed_tests": 15,
+  "failed_tests": 0,
+  "success_rate": 100.0,
+  "test_results": [
+    {
+      "test": "Get current user (/auth/me)",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"id\": \"test-user-1763303346\",\n  \"email\": \"test.user.1763303346@example.com\",\n  \"name\": \"Test User\",\n  \"picture\": \"https://via.placeholder.com/150\",\n  \"created_at\": \"2025-11-16T14:29:07.479000Z\"\n}...",
+      "timestamp": "2025-11-16T14:29:07.658392"
+    },
+    {
+      "test": "User data validation",
+      "status": "PASS",
+      "details": "Email and name present",
+      "timestamp": "2025-11-16T14:29:07.659029"
+    },
+    {
+      "test": "Get current user without auth",
+      "status": "PASS",
+      "details": "Status: 401, Response: {\n  \"detail\": \"Not authenticated\"\n}...",
+      "timestamp": "2025-11-16T14:29:07.700219"
+    },
+    {
+      "test": "Get user stats (/stats)",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"id\": \"stats-1763303347531\",\n  \"user_id\": \"test-user-1763303346\",\n  \"total_study_minutes\": 0,\n  \"total_breaks\": 0,\n  \"last_timer_duration\": 25,\n  \"updated_at\": \"2025-11-16T14:29:07.531000Z\"\n}...",
+      "timestamp": "2025-11-16T14:29:07.738198"
+    },
+    {
+      "test": "Stats data validation",
+      "status": "PASS",
+      "details": "All required fields present",
+      "timestamp": "2025-11-16T14:29:07.738824"
+    },
+    {
+      "test": "Update timer duration (/stats/timer)",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"message\": \"Timer duration updated\"\n}...",
+      "timestamp": "2025-11-16T14:29:07.780017"
+    },
+    {
+      "test": "Create study session (/sessions)",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"id\": \"c7f7b7ab-cef1-4933-8f56-0c8a3c74ced4\",\n  \"user_id\": \"test-user-1763303346\",\n  \"duration_minutes\": 25,\n  \"started_at\": \"2025-11-16T14:29:07.814684Z\",\n  \"ended_at\": null,\n  \"breaks_taken\": 0,...",
+      "timestamp": "2025-11-16T14:29:07.827999"
+    },
+    {
+      "test": "Session ID validation",
+      "status": "PASS",
+      "details": "Session ID: c7f7b7ab-cef1-4933-8f56-0c8a3c74ced4",
+      "timestamp": "2025-11-16T14:29:07.828624"
+    },
+    {
+      "test": "Update study session (/sessions/{id})",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"id\": \"c7f7b7ab-cef1-4933-8f56-0c8a3c74ced4\",\n  \"user_id\": \"test-user-1763303346\",\n  \"duration_minutes\": 25,\n  \"started_at\": \"2025-11-16T14:29:07.814684Z\",\n  \"ended_at\": \"2025-11-16T14:29:07.86849...",
+      "timestamp": "2025-11-16T14:29:07.877381"
+    },
+    {
+      "test": "Get active exercises (/exercises/active)",
+      "status": "PASS",
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"e49f65b6-7743-4319-9634-2d8bdbda0610\",\n    \"category\": \"active\",\n    \"title\": \"Jumping Jacks\",\n    \"description\": \"1. Stehe aufrecht mit F\\u00fc\\u00dfen zusammen und Armen an den Seit...",
+      "timestamp": "2025-11-16T14:29:08.075180"
+    },
+    {
+      "test": "Active exercises format",
+      "status": "PASS",
+      "details": "Returned 5 exercises",
+      "timestamp": "2025-11-16T14:29:08.076307"
+    },
+    {
+      "test": "Get relaxed exercises (/exercises/relaxed)",
+      "status": "PASS",
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"17bfec4c-c489-4631-a2cd-b7dac2c0fc7b\",\n    \"category\": \"relaxed\",\n    \"title\": \"4-7-8 Atemtechnik\",\n    \"description\": \"1. Setze dich bequem hin mit geradem R\\u00fccken.\\n2. Lege die ...",
+      "timestamp": "2025-11-16T14:29:08.293892"
+    },
+    {
+      "test": "Relaxed exercises format",
+      "status": "PASS",
+      "details": "Returned 5 exercises",
+      "timestamp": "2025-11-16T14:29:08.295194"
+    },
+    {
+      "test": "Get invalid category exercises",
+      "status": "PASS",
+      "details": "Status: 400, Response: {\n  \"detail\": \"Invalid category\"\n}...",
+      "timestamp": "2025-11-16T14:29:08.336140"
+    },
+    {
+      "test": "Exercise generation with image",
+      "status": "PASS",
+      "details": "Image generated successfully",
+      "timestamp": "2025-11-16T14:29:27.020033"
+    }
+  ],
+  "timestamp": "2025-11-16T14:29:27.349062"
+}
