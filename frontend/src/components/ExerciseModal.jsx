@@ -82,20 +82,37 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
     // Stop any ongoing speech
     window.speechSynthesis.cancel();
 
-    // Prepare text with natural pauses for better listening experience
+    // Prepare text with optimal formatting for natural speech
     const cleanDescription = currentExercise.description
       .split('\n')
       .filter(line => line.trim())
-      .map(line => {
-        // Add pause markers between numbered steps
-        if (/^\d+\./.test(line.trim())) {
-          return line.trim() + ' ... '; // Add pause after each step
+      .map((line, index) => {
+        let processedLine = line.trim();
+        
+        // Remove numbered list prefixes for more natural speech
+        processedLine = processedLine.replace(/^(\d+)\.\s*/, 'Schritt $1: ');
+        
+        // Ensure proper punctuation for pauses
+        if (!processedLine.endsWith('.') && !processedLine.endsWith('!') && !processedLine.endsWith('?')) {
+          processedLine += '.';
         }
-        return line.trim();
+        
+        // Add strategic pauses between steps
+        if (index < currentExercise.description.split('\n').filter(l => l.trim()).length - 1) {
+          processedLine += ' '; // Natural pause through period
+        }
+        
+        return processedLine;
       })
-      .join('. ');
+      .join(' ');
     
-    const textToRead = `${currentExercise.title}. ... Dauer: ${currentExercise.duration_minutes} Minuten. ... Und so geht's: ... ${cleanDescription}`;
+    // Add benefit section with pause if available
+    let benefitText = '';
+    if (cleanDescription.includes('Vorteile:')) {
+      benefitText = ' Wichtig zu wissen: Diese Übung hat folgende Vorteile. ';
+    }
+    
+    const textToRead = `${currentExercise.title}. Dauer dieser Übung: ${currentExercise.duration_minutes} Minuten. So führst du die Übung durch. ${cleanDescription}${benefitText}`;
 
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'de-DE';
