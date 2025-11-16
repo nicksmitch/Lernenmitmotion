@@ -108,11 +108,11 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
               </div>
 
               {currentExercise.image_url && (
-                <div className="rounded-xl overflow-hidden">
+                <div className="rounded-xl overflow-hidden bg-gray-100">
                   <img 
                     src={currentExercise.image_url} 
                     alt={currentExercise.title}
-                    className="w-full h-48 sm:h-64 object-cover"
+                    className="w-full h-48 sm:h-64 object-contain"
                   />
                 </div>
               )}
