@@ -81,30 +81,68 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
     // Stop any ongoing speech
     window.speechSynthesis.cancel();
 
-    // Prepare text - clean up newlines for better speech
+    // Prepare text with natural pauses for better listening experience
     const cleanDescription = currentExercise.description
-      .replace(/\n+/g, '. ')
-      .replace(/\.\s*\./g, '.')
-      .trim();
+      .split('\n')
+      .filter(line => line.trim())
+      .map(line => {
+        // Add pause markers between numbered steps
+        if (/^\d+\./.test(line.trim())) {
+          return line.trim() + ' ... '; // Add pause after each step
+        }
+        return line.trim();
+      })
+      .join('. ');
     
-    const textToRead = `${currentExercise.title}. 
-    Dauer: ${currentExercise.duration_minutes} Minuten. 
-    Anleitung: ${cleanDescription}`;
+    const textToRead = `${currentExercise.title}. ... Dauer: ${currentExercise.duration_minutes} Minuten. ... Und so geht's: ... ${cleanDescription}`;
 
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'de-DE';
-    utterance.rate = 0.9; // Slightly slower for better understanding
-    utterance.pitch = 1.0;
+    utterance.rate = 0.85; // Slower, more relaxed pace
+    utterance.pitch = 1.1; // Slightly higher for friendlier tone
     utterance.volume = 1.0;
 
-    // Function to set voice (needed for some browsers)
+    // Function to find the best German voice
     const setVoice = () => {
       const voices = window.speechSynthesis.getVoices();
-      const germanVoice = voices.find(voice => 
-        voice.lang.includes('de-DE') || voice.lang.includes('de')
+      
+      // Priority order for finding best German voice
+      // 1. Look for high-quality/natural voices first
+      let germanVoice = voices.find(voice => 
+        (voice.lang.includes('de-DE') || voice.lang.includes('de')) &&
+        (voice.name.includes('Premium') || 
+         voice.name.includes('Enhanced') || 
+         voice.name.includes('Natural') ||
+         voice.name.includes('Neural'))
       );
+      
+      // 2. Look for female voices (often perceived as more pleasant)
+      if (!germanVoice) {
+        germanVoice = voices.find(voice => 
+          (voice.lang.includes('de-DE') || voice.lang.includes('de')) &&
+          (voice.name.includes('Female') || 
+           voice.name.includes('Weiblich') ||
+           voice.name.includes('Anna') ||
+           voice.name.includes('Petra') ||
+           voice.name.includes('Marlene'))
+        );
+      }
+      
+      // 3. Any German voice
+      if (!germanVoice) {
+        germanVoice = voices.find(voice => 
+          voice.lang.includes('de-DE') || voice.lang.includes('de')
+        );
+      }
+      
+      // 4. Fallback to default
+      if (!germanVoice && voices.length > 0) {
+        germanVoice = voices[0];
+      }
+      
       if (germanVoice) {
         utterance.voice = germanVoice;
+        console.log('Selected voice:', germanVoice.name);
       }
     };
 
