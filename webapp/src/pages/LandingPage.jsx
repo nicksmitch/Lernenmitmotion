@@ -26,46 +26,6 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* Login Modal */}
-      {showNameInput && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="glass rounded-2xl p-8 max-w-md w-full">
-            <h2 className="text-2xl font-bold text-emerald-900 mb-4">Willkommen bei FocusFlow</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-emerald-700 mb-2">
-                  Wie heißt du?
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-emerald-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                  placeholder="Dein Name"
-                  autoFocus
-                />
-              </div>
-              <div className="flex gap-3">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setShowNameInput(false)}
-                  className="flex-1"
-                >
-                  Abbrechen
-                </Button>
-                <Button
-                  type="submit"
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white"
-                >
-                  Los geht's!
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-12 sm:py-20 text-center">
         <div className="max-w-4xl mx-auto fade-in">
@@ -80,7 +40,7 @@ const LandingPage = () => {
           </p>
           <Button 
             data-testid="hero-get-started-btn"
-            onClick={handleLogin}
+            onClick={() => navigate('/auth')}
             size="lg"
             className="bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl touch-manipulation"
           >
