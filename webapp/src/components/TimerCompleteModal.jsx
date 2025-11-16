@@ -74,25 +74,25 @@ const TimerCompleteModal = ({ onTakeBreak, onContinue }) => {
             />
           </div>
 
-          {/* Pause options */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* Pause options - Bigger buttons */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Button
               data-testid="timer-complete-active-btn"
               onClick={() => onTakeBreak('active')}
-              className="h-32 bg-gradient-to-br from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white flex-col space-y-2 rounded-xl"
+              className="h-40 sm:h-48 bg-gradient-to-br from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 active:from-orange-700 active:to-red-700 text-white flex-col space-y-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all touch-manipulation"
             >
-              <Coffee className="w-10 h-10" />
-              <span className="text-base font-semibold">Aktive Pause</span>
-              <span className="text-xs opacity-90">Bewegung</span>
+              <Coffee className="w-14 h-14 sm:w-16 sm:h-16" />
+              <span className="text-xl sm:text-2xl font-bold">Aktive Pause</span>
+              <span className="text-sm sm:text-base opacity-90">Bewegungs- & Koordinationsübungen</span>
             </Button>
             <Button
               data-testid="timer-complete-relaxed-btn"
               onClick={() => onTakeBreak('relaxed')}
-              className="h-32 bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white flex-col space-y-2 rounded-xl"
+              className="h-40 sm:h-48 bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 active:from-blue-700 active:to-purple-700 text-white flex-col space-y-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all touch-manipulation"
             >
-              <Heart className="w-10 h-10" />
-              <span className="text-base font-semibold">Entspannende Pause</span>
-              <span className="text-xs opacity-90">Meditation</span>
+              <Heart className="w-14 h-14 sm:w-16 sm:h-16" />
+              <span className="text-xl sm:text-2xl font-bold">Entspannende Pause</span>
+              <span className="text-sm sm:text-base opacity-90">Meditations- & Atemübungen</span>
             </Button>
           </div>
 
