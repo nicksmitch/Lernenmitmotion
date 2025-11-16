@@ -240,31 +240,31 @@ const Dashboard = () => {
                     </Button>
                   </div>
                 ) : (
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div className="text-center">
-                      <div className="text-6xl font-bold text-emerald-900 mb-4">
+                      <div className="text-5xl sm:text-6xl font-bold text-emerald-900 mb-4">
                         {formatTime(timeLeft)}
                       </div>
-                      <Progress value={progress} className="h-3 mb-4" />
-                      <p className="text-emerald-700">
+                      <Progress value={progress} className="h-2 sm:h-3 mb-4" />
+                      <p className="text-sm sm:text-base text-emerald-700">
                         {Math.floor(timeLeft / 60)} Minuten verbleibend
                       </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4">
                       <Button 
                         data-testid="pause-resume-btn"
                         onClick={pauseTimer}
                         variant="outline"
-                        className="py-6 text-lg border-emerald-300"
+                        className="py-4 sm:py-6 text-base sm:text-lg border-emerald-300 touch-manipulation"
                       >
-                        <Pause className="w-5 h-5 mr-2" />
+                        <Pause className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                         {isPaused ? 'Fortsetzen' : 'Pausieren'}
                       </Button>
                       <Button 
                         data-testid="stop-timer-btn"
                         onClick={stopTimer}
                         variant="destructive"
-                        className="py-6 text-lg"
+                        className="py-4 sm:py-6 text-base sm:text-lg touch-manipulation"
                       >
                         Beenden
                       </Button>
