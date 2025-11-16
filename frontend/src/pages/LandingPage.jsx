@@ -139,12 +139,12 @@ const LandingPage = () => {
 };
 
 const FeatureCard = ({ icon, title, description }) => (
-  <div className="glass rounded-2xl p-6 hover:shadow-xl transition-shadow">
-    <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4">
+  <div className="glass rounded-2xl p-5 sm:p-6 hover:shadow-xl transition-shadow">
+    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4">
       {icon}
     </div>
-    <h3 className="text-xl font-semibold text-emerald-900 mb-2">{title}</h3>
-    <p className="text-emerald-700">{description}</p>
+    <h3 className="text-lg sm:text-xl font-semibold text-emerald-900 mb-2">{title}</h3>
+    <p className="text-sm sm:text-base text-emerald-700">{description}</p>
   </div>
 );
 
