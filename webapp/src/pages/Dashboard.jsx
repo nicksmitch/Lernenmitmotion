@@ -304,13 +304,6 @@ const Dashboard = () => {
                 </Button>
               </CardContent>
             </Card>
-          </div>
-
-            </div>
-          </div>
-
-          {/* Stats Section - Rechte Sidebar */}
-          <div className="space-y-6">
             <Card data-testid="stats-card" className="glass border-emerald-200">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-emerald-900">
