@@ -1,27 +1,9 @@
-import { useContext, useState } from 'react';
-import { AuthContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { BookOpen, Brain, Coffee, Timer, TrendingUp } from 'lucide-react';
-import { toast } from 'sonner';
 
 const LandingPage = () => {
-  const { login } = useContext(AuthContext);
-  const [showNameInput, setShowNameInput] = useState(false);
-  const [name, setName] = useState('');
-
-  const handleLogin = () => {
-    setShowNameInput(true);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name.trim()) {
-      login(name.trim());
-      toast.success(`Willkommen, ${name}!`);
-    } else {
-      toast.error('Bitte gib deinen Namen ein');
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
