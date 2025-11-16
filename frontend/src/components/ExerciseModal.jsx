@@ -176,11 +176,27 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
             </div>
           ) : currentExercise ? (
             <>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-emerald-900 mb-2">{currentExercise.title}</h3>
-                <p className="text-sm sm:text-base text-emerald-600">
-                  Dauer: {currentExercise.duration_minutes} Minuten
-                </p>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-emerald-900 mb-2">{currentExercise.title}</h3>
+                  <p className="text-sm sm:text-base text-emerald-600">
+                    Dauer: {currentExercise.duration_minutes} Minuten
+                  </p>
+                </div>
+                <Button
+                  data-testid="read-aloud-btn"
+                  onClick={isReading ? stopReading : startReading}
+                  variant={isReading ? "destructive" : "outline"}
+                  size="icon"
+                  className="flex-shrink-0 h-12 w-12 sm:h-14 sm:w-14 rounded-full touch-manipulation"
+                  title={isReading ? "Vorlesen stoppen" : "Übung vorlesen lassen"}
+                >
+                  {isReading ? (
+                    <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" />
+                  ) : (
+                    <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                  )}
+                </Button>
               </div>
 
               {currentExercise.image_url && !imageError && (
