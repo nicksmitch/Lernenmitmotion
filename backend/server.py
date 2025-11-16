@@ -68,6 +68,8 @@ class Exercise(BaseModel):
     description: str
     duration_minutes: int
     image_url: Optional[str] = None
+    roles: List[str] = ["individual", "teacher"]  # which roles can access this exercise
+    is_group_exercise: bool = False  # True for group/partner exercises
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class UserStats(BaseModel):
