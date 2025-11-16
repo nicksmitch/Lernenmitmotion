@@ -123,16 +123,21 @@ const Dashboard = () => {
   };
 
   const onBreakComplete = () => {
+    // Increment breaks counter
     const newBreaksCount = breaksThisSession + 1;
     setBreaksThisSession(newBreaksCount);
     setShowExerciseModal(false);
     
-    // Update stats immediately
-    const updatedStats = {
-      ...stats,
-      totalBreaks: stats.totalBreaks + 1
-    };
-    saveStats(updatedStats);
+    // Update total stats immediately and save
+    if (stats) {
+      const updatedStats = {
+        ...stats,
+        totalBreaks: (stats.totalBreaks || 0) + 1
+      };
+      saveStats(updatedStats);
+      // Force re-render by setting stats
+      setStats(updatedStats);
+    }
     
     if (isRunning && timeLeft > 0) {
       setIsPaused(false);
