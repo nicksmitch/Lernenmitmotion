@@ -36,6 +36,7 @@ class User(BaseModel):
     email: str
     name: str
     picture: Optional[str] = None
+    role: str = "individual"  # individual or teacher
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class UserSession(BaseModel):
