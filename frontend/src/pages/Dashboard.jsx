@@ -277,34 +277,34 @@ const Dashboard = () => {
             {/* Break Options */}
             <Card className="glass border-emerald-200">
               <CardHeader>
-                <CardTitle className="text-2xl text-emerald-900">Pause benötigt?</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-xl sm:text-2xl text-emerald-900">Pause benötigt?</CardTitle>
+                <CardDescription className="text-sm sm:text-base">
                   {user?.role === 'teacher' 
                     ? 'Wähle zwischen individuellen oder Gruppen-Übungen' 
                     : 'Wähle zwischen aktiven oder entspannenden Übungen'
                   }
                 </CardDescription>
               </CardHeader>
-              <CardContent className="grid sm:grid-cols-2 gap-4">
+              <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <Button 
                   data-testid="active-break-btn"
                   onClick={() => takeBreak('active')}
-                  className="h-32 bg-gradient-to-br from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white flex-col space-y-2 rounded-xl"
+                  className="h-28 sm:h-32 bg-gradient-to-br from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 active:from-orange-700 active:to-red-700 text-white flex-col space-y-2 rounded-xl touch-manipulation"
                 >
-                  <Coffee className="w-10 h-10" />
-                  <span className="text-lg font-semibold">Aktive Pause</span>
-                  <span className="text-sm opacity-90">
+                  <Coffee className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <span className="text-base sm:text-lg font-semibold">Aktive Pause</span>
+                  <span className="text-xs sm:text-sm opacity-90">
                     {user?.role === 'teacher' ? 'Bewegung & Gruppenspiele' : 'Bewegung & Energie'}
                   </span>
                 </Button>
                 <Button 
                   data-testid="relaxed-break-btn"
                   onClick={() => takeBreak('relaxed')}
-                  className="h-32 bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white flex-col space-y-2 rounded-xl"
+                  className="h-28 sm:h-32 bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 active:from-blue-700 active:to-purple-700 text-white flex-col space-y-2 rounded-xl touch-manipulation"
                 >
-                  <Heart className="w-10 h-10" />
-                  <span className="text-lg font-semibold">Entspannende Pause</span>
-                  <span className="text-sm opacity-90">
+                  <Heart className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <span className="text-base sm:text-lg font-semibold">Entspannende Pause</span>
+                  <span className="text-xs sm:text-sm opacity-90">
                     {user?.role === 'teacher' ? 'Gruppen-Entspannung' : 'Meditation & Ruhe'}
                   </span>
                 </Button>
