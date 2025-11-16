@@ -153,15 +153,15 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
       {/* Header */}
       <header className="glass border-b border-emerald-100">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
-                <Brain className="w-6 h-6 text-white" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
+                <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-emerald-900">FocusFlow</span>
+              <span className="text-xl sm:text-2xl font-bold text-emerald-900">FocusFlow</span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="hidden sm:flex flex-col items-end">
                 <span className="text-emerald-900 font-medium">{user?.name}</span>
                 <span className="text-xs text-emerald-600">{roleDisplay}</span>
