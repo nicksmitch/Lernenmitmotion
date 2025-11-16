@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { X, CheckCircle, Loader2, Users } from 'lucide-react';
+import { X, CheckCircle, Loader2, Users, Volume2, VolumeX } from 'lucide-react';
 import { toast } from 'sonner';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -13,6 +13,8 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
   const [currentExercise, setCurrentExercise] = useState(null);
   const [loading, setLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
+  const [isReading, setIsReading] = useState(false);
+  const speechSynthRef = useRef(null);
 
   useEffect(() => {
     fetchExercises();
