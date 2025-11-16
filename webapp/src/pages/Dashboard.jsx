@@ -301,8 +301,11 @@ const Dashboard = () => {
             </Card>
           </div>
 
-          {/* Stats Section */}
+          {/* Stats & Music Section */}
           <div className="space-y-6">
+            {/* Spotify Player */}
+            <SpotifyPlayer />
+
             <Card data-testid="stats-card" className="glass border-emerald-200">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-emerald-900">
