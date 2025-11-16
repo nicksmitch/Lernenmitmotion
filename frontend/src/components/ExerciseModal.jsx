@@ -117,8 +117,15 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'de-DE';
     utterance.rate = voiceSpeed; // User-adjustable speed
-    utterance.pitch = 1.1; // Slightly higher for friendlier tone
+    utterance.pitch = 1.05; // Subtle pitch increase for warmth
     utterance.volume = 1.0;
+    
+    // Try to use SSML for better prosody (if supported)
+    // Some browsers ignore this, but it doesn't hurt to try
+    if (textToRead.includes('Schritt')) {
+      // Add slight emphasis on step numbers
+      utterance.text = textToRead.replace(/Schritt (\d+):/g, 'Schritt $1, ');
+    }
 
     // Function to find the best German voice
     const setVoice = () => {
