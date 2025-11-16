@@ -108,14 +108,23 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
                 </p>
               </div>
 
-              {currentExercise.image_url && (
-                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+              {currentExercise.image_url && !imageError && (
+                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center min-h-[12rem] sm:min-h-[16rem]">
                   <img 
                     src={currentExercise.image_url} 
                     alt={currentExercise.title}
-                    className="w-full h-48 sm:h-64 object-contain p-2"
-                    style={{maxHeight: '16rem'}}
+                    className="w-full h-auto max-h-48 sm:max-h-64 object-contain p-2"
+                    onError={() => setImageError(true)}
+                    loading="lazy"
                   />
+                </div>
+              )}
+              
+              {imageError && (
+                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 flex items-center justify-center h-48 sm:h-64">
+                  <p className="text-emerald-600 text-center px-4">
+                    Bild wird geladen oder ist nicht verfügbar
+                  </p>
                 </div>
               )}
 
