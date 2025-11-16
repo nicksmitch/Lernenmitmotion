@@ -426,6 +426,7 @@ print('Test data cleaned up');
             self.test_auth_endpoints()
             self.test_stats_endpoints()
             self.test_session_endpoints()
+            self.test_role_endpoints()
             self.test_exercise_endpoints()
             self.test_exercise_generation()
             
