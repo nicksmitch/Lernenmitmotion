@@ -227,38 +227,118 @@ print('Test user created successfully');
                 data={"breaks_taken": 2, "status": "completed"}
             )
 
+    def test_role_endpoints(self):
+        """Test role management endpoints"""
+        print("\n👥 Testing Role Management Endpoints...")
+        
+        # Test update role to teacher
+        success, data = self.run_api_test(
+            "Update role to teacher (/profile/role)",
+            "PUT", "profile/role", 200,
+            data={"role": "teacher"}
+        )
+        
+        if success and data:
+            if data.get('role') == 'teacher':
+                self.log_test("Role update validation", True, "Role updated to teacher")
+            else:
+                self.log_test("Role update validation", False, f"Expected teacher, got {data.get('role')}")
+
+        # Test invalid role
+        self.run_api_test(
+            "Update to invalid role",
+            "PUT", "profile/role", 400,
+            data={"role": "invalid_role"}
+        )
+
+        # Test update role back to individual
+        self.run_api_test(
+            "Update role to individual (/profile/role)",
+            "PUT", "profile/role", 200,
+            data={"role": "individual"}
+        )
+
     def test_exercise_endpoints(self):
-        """Test exercise endpoints"""
+        """Test exercise endpoints with role-based filtering"""
         print("\n🏃 Testing Exercise Endpoints...")
         
-        # Test get active exercises
-        success, data = self.run_api_test(
-            "Get active exercises (/exercises/active)",
+        # Test exercises as individual user (default)
+        success, individual_active = self.run_api_test(
+            "Get active exercises as individual (/exercises/active)",
             "GET", "exercises/active", 200
         )
         
         if success:
-            if isinstance(data, list):
-                self.log_test("Active exercises format", True, f"Returned {len(data)} exercises")
+            if isinstance(individual_active, list):
+                individual_count = len(individual_active)
+                self.log_test("Individual active exercises format", True, f"Returned {individual_count} exercises")
+                
+                # Check for group exercises (should not be present for individual users)
+                group_exercises = [ex for ex in individual_active if ex.get('is_group_exercise', False)]
+                if not group_exercises:
+                    self.log_test("Individual user group exercise filtering", True, "No group exercises for individual user")
+                else:
+                    self.log_test("Individual user group exercise filtering", False, f"Found {len(group_exercises)} group exercises")
             else:
-                self.log_test("Active exercises format", False, "Response is not a list")
+                self.log_test("Individual active exercises format", False, "Response is not a list")
 
-        # Test get relaxed exercises
-        success, data = self.run_api_test(
-            "Get relaxed exercises (/exercises/relaxed)",
+        # Test exercises as individual user (relaxed)
+        success, individual_relaxed = self.run_api_test(
+            "Get relaxed exercises as individual (/exercises/relaxed)",
             "GET", "exercises/relaxed", 200
         )
         
         if success:
-            if isinstance(data, list):
-                self.log_test("Relaxed exercises format", True, f"Returned {len(data)} exercises")
+            if isinstance(individual_relaxed, list):
+                individual_relaxed_count = len(individual_relaxed)
+                self.log_test("Individual relaxed exercises format", True, f"Returned {individual_relaxed_count} exercises")
             else:
-                self.log_test("Relaxed exercises format", False, "Response is not a list")
+                self.log_test("Individual relaxed exercises format", False, "Response is not a list")
+
+        # Switch to teacher role and test exercises
+        self.run_api_test(
+            "Switch to teacher role for exercise testing",
+            "PUT", "profile/role", 200,
+            data={"role": "teacher"}
+        )
+
+        # Test exercises as teacher user
+        success, teacher_active = self.run_api_test(
+            "Get active exercises as teacher (/exercises/active)",
+            "GET", "exercises/active", 200
+        )
+        
+        if success:
+            if isinstance(teacher_active, list):
+                teacher_count = len(teacher_active)
+                self.log_test("Teacher active exercises format", True, f"Returned {teacher_count} exercises")
+                
+                # Teachers should see more or equal exercises than individuals
+                if teacher_count >= individual_count:
+                    self.log_test("Teacher exercise access", True, f"Teacher sees {teacher_count} vs individual {individual_count}")
+                else:
+                    self.log_test("Teacher exercise access", False, f"Teacher sees fewer exercises than individual")
+                    
+                # Check for group exercises (should be present for teachers)
+                group_exercises = [ex for ex in teacher_active if ex.get('is_group_exercise', False)]
+                if group_exercises:
+                    self.log_test("Teacher group exercise access", True, f"Found {len(group_exercises)} group exercises")
+                else:
+                    self.log_test("Teacher group exercise access", False, "No group exercises found for teacher")
+            else:
+                self.log_test("Teacher active exercises format", False, "Response is not a list")
 
         # Test invalid category
         self.run_api_test(
             "Get invalid category exercises",
             "GET", "exercises/invalid", 400
+        )
+
+        # Switch back to individual for cleanup
+        self.run_api_test(
+            "Switch back to individual role",
+            "PUT", "profile/role", 200,
+            data={"role": "individual"}
         )
 
     def test_exercise_generation(self):
