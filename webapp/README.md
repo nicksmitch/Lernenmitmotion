@@ -120,19 +120,24 @@ webapp/
 │   ├── components/       # React Komponenten
 │   │   ├── ui/          # shadcn/ui Komponenten
 │   │   ├── ExerciseModal.jsx
-│   │   └── RoleSelector.jsx
+│   │   ├── RoleSelector.jsx
+│   │   ├── SpotifyPlayerCompact.jsx
+│   │   └── TimerCompleteModal.jsx
 │   ├── pages/           # Seiten
 │   │   ├── LandingPage.jsx
+│   │   ├── AuthPage.jsx      # Login/Registrierung
 │   │   └── Dashboard.jsx
-│   ├── data/            # Mock-Daten
-│   │   └── exercises.js
+│   ├── data/            # Daten
+│   │   └── exercises.js      # 50 Übungen
 │   ├── lib/             # Utilities
-│   │   └── utils.js
-│   ├── App.jsx          # Haupt-App
+│   │   ├── utils.js
+│   │   └── supabaseClient.js # Supabase Auth
+│   ├── App.jsx          # Haupt-App + Auth Context
 │   ├── App.css
 │   ├── index.css
 │   └── main.jsx         # Entry Point
 ├── public/              # Statische Assets
+├── .env.example         # Environment-Variablen Vorlage
 ├── index.html
 ├── package.json
 ├── vite.config.js
