@@ -74,14 +74,14 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
             onClick={onClose}
             variant="ghost"
             size="icon"
-            className="absolute right-4 top-4"
+            className="absolute right-2 sm:right-4 top-2 sm:top-4 touch-manipulation"
           >
             <X className="w-5 h-5" />
           </Button>
-          <CardTitle className="text-2xl text-emerald-900 pr-12">
+          <CardTitle className="text-xl sm:text-2xl text-emerald-900 pr-10 sm:pr-12">
             {category === 'active' ? 'Aktive Pause' : 'Entspannende Pause'}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-sm sm:text-base">
             {currentExercise?.is_group_exercise ? (
               <span className="flex items-center text-purple-600 font-medium">
                 <Users className="w-4 h-4 mr-1" />
@@ -92,7 +92,7 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
             )}
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6">
           {loading ? (
             <div className="text-center py-12">
               <Loader2 className="w-12 h-12 animate-spin text-emerald-600 mx-auto mb-4" />
