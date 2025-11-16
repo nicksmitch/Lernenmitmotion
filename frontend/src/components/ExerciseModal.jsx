@@ -14,6 +14,7 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
   const [loading, setLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
   const [isReading, setIsReading] = useState(false);
+  const [voiceSpeed, setVoiceSpeed] = useState(0.85); // Default: langsam und angenehm
   const speechSynthRef = useRef(null);
 
   useEffect(() => {
