@@ -41,7 +41,7 @@ const Dashboard = () => {
         setTimeLeft(prev => {
           if (prev <= 1) {
             setIsRunning(false);
-            toast.success('Lernphase abgeschlossen! Zeit für eine Pause.');
+            setShowTimerComplete(true);
             return 0;
           }
           return prev - 1;
