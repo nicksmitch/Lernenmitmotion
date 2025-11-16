@@ -30,22 +30,22 @@ const LandingPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
+      <section className="container mx-auto px-4 py-12 sm:py-20 text-center">
         <div className="max-w-4xl mx-auto fade-in">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-emerald-900 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-emerald-900 mb-6 leading-tight">
             Lernen mit Fokus und
             <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
               gesunden Pausen
             </span>
           </h1>
-          <p className="text-lg sm:text-xl text-emerald-700 mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-emerald-700 mb-8 sm:mb-12 max-w-2xl mx-auto">
             FocusFlow hilft Studierenden und Schülern, produktiver zu lernen mit individuellen Lernphasen und wissenschaftlich fundierten Bewegungs- und Entspannungspausen.
           </p>
           <Button 
             data-testid="hero-get-started-btn"
             onClick={handleLogin}
             size="lg"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-6 text-lg rounded-full shadow-lg hover:shadow-xl"
+            className="bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl touch-manipulation"
           >
             Jetzt starten
           </Button>
