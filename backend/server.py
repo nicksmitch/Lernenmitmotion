@@ -340,13 +340,33 @@ async def get_exercises(category: str, request: Request):
     if category not in ["active", "relaxed"]:
         raise HTTPException(status_code=400, detail="Invalid category")
     
-    exercises = await db.exercises.find({"category": category}, {"_id": 0}).to_list(100)
+    # Filter exercises based on user role
+    exercises = await db.exercises.find({
+        "category": category,
+        "roles": user.role
+    }, {"_id": 0}).to_list(100)
     
     for exercise in exercises:
         if isinstance(exercise.get('created_at'), str):
             exercise['created_at'] = datetime.fromisoformat(exercise['created_at'])
     
     return exercises
+
+@api_router.put("/profile/role")
+async def update_role(role_data: RoleUpdate, request: Request):
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    if role_data.role not in ["individual", "teacher"]:
+        raise HTTPException(status_code=400, detail="Invalid role")
+    
+    await db.users.update_one(
+        {"id": user.id},
+        {"$set": {"role": role_data.role}}
+    )
+    
+    return {"message": "Role updated successfully", "role": role_data.role}
 
 @api_router.post("/exercises/generate")
 async def generate_exercise(exercise_data: ExerciseGenerate, request: Request):
