@@ -265,7 +265,9 @@ const SpotifyPlayer = () => {
                 <button
                   key={playlist.id}
                   onClick={() => handlePlayPlaylist(playlist)}
-                  className={`w-full flex items-center space-x-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors text-left ${\n                    selectedPlaylist?.id === playlist.id ? 'bg-emerald-100 ring-2 ring-emerald-400' : ''\n                  }`}
+                  className={`w-full flex items-center space-x-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors text-left ${
+                    selectedPlaylist?.id === playlist.id ? 'bg-emerald-100 ring-2 ring-emerald-400' : ''
+                  }`}
                 >
                   {playlist.images[0] && (
                     <img 
