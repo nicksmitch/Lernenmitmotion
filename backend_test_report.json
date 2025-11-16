@@ -1,99 +1,165 @@
 {
-  "total_tests": 15,
-  "passed_tests": 15,
+  "total_tests": 26,
+  "passed_tests": 26,
   "failed_tests": 0,
   "success_rate": 100.0,
   "test_results": [
     {
       "test": "Get current user (/auth/me)",
       "status": "PASS",
-      "details": "Status: 200, Response: {\n  \"id\": \"test-user-1763305115\",\n  \"email\": \"test.user.1763305115@example.com\",\n  \"name\": \"Test User\",\n  \"picture\": \"https://via.placeholder.com/150\",\n  \"role\": \"individual\",\n  \"created_at\": \"2025-11...",
-      "timestamp": "2025-11-16T14:58:35.808064"
+      "details": "Status: 200, Response: {\n  \"id\": \"test-user-1763305160\",\n  \"email\": \"test.user.1763305160@example.com\",\n  \"name\": \"Test User\",\n  \"picture\": \"https://via.placeholder.com/150\",\n  \"role\": \"individual\",\n  \"created_at\": \"2025-11...",
+      "timestamp": "2025-11-16T14:59:21.194648"
     },
     {
       "test": "User data validation",
       "status": "PASS",
       "details": "Email and name present",
-      "timestamp": "2025-11-16T14:58:35.808553"
+      "timestamp": "2025-11-16T14:59:21.195167"
     },
     {
       "test": "Get current user without auth",
       "status": "PASS",
       "details": "Status: 401, Response: {\n  \"detail\": \"Not authenticated\"\n}...",
-      "timestamp": "2025-11-16T14:58:35.846293"
+      "timestamp": "2025-11-16T14:59:21.234886"
     },
     {
       "test": "Get user stats (/stats)",
       "status": "PASS",
-      "details": "Status: 200, Response: {\n  \"id\": \"stats-1763305115641\",\n  \"user_id\": \"test-user-1763305115\",\n  \"total_study_minutes\": 0,\n  \"total_breaks\": 0,\n  \"last_timer_duration\": 25,\n  \"updated_at\": \"2025-11-16T14:58:35.641000Z\"\n}...",
-      "timestamp": "2025-11-16T14:58:35.883055"
+      "details": "Status: 200, Response: {\n  \"id\": \"stats-1763305160901\",\n  \"user_id\": \"test-user-1763305160\",\n  \"total_study_minutes\": 0,\n  \"total_breaks\": 0,\n  \"last_timer_duration\": 25,\n  \"updated_at\": \"2025-11-16T14:59:20.901000Z\"\n}...",
+      "timestamp": "2025-11-16T14:59:21.273006"
     },
     {
       "test": "Stats data validation",
       "status": "PASS",
       "details": "All required fields present",
-      "timestamp": "2025-11-16T14:58:35.883569"
+      "timestamp": "2025-11-16T14:59:21.273511"
     },
     {
       "test": "Update timer duration (/stats/timer)",
       "status": "PASS",
       "details": "Status: 200, Response: {\n  \"message\": \"Timer duration updated\"\n}...",
-      "timestamp": "2025-11-16T14:58:35.921473"
+      "timestamp": "2025-11-16T14:59:21.310365"
     },
     {
       "test": "Create study session (/sessions)",
       "status": "PASS",
-      "details": "Status: 200, Response: {\n  \"id\": \"1839dd8e-4c29-468d-bc15-f9055b232475\",\n  \"user_id\": \"test-user-1763305115\",\n  \"duration_minutes\": 25,\n  \"started_at\": \"2025-11-16T14:58:35.958633Z\",\n  \"ended_at\": null,\n  \"breaks_taken\": 0,...",
-      "timestamp": "2025-11-16T14:58:35.961489"
+      "details": "Status: 200, Response: {\n  \"id\": \"8398ac75-04f7-47ed-8cbf-eb801ab2ebe1\",\n  \"user_id\": \"test-user-1763305160\",\n  \"duration_minutes\": 25,\n  \"started_at\": \"2025-11-16T14:59:21.343742Z\",\n  \"ended_at\": null,\n  \"breaks_taken\": 0,...",
+      "timestamp": "2025-11-16T14:59:21.387661"
     },
     {
       "test": "Session ID validation",
       "status": "PASS",
-      "details": "Session ID: 1839dd8e-4c29-468d-bc15-f9055b232475",
-      "timestamp": "2025-11-16T14:58:35.962033"
+      "details": "Session ID: 8398ac75-04f7-47ed-8cbf-eb801ab2ebe1",
+      "timestamp": "2025-11-16T14:59:21.388305"
     },
     {
       "test": "Update study session (/sessions/{id})",
       "status": "PASS",
-      "details": "Status: 200, Response: {\n  \"id\": \"1839dd8e-4c29-468d-bc15-f9055b232475\",\n  \"user_id\": \"test-user-1763305115\",\n  \"duration_minutes\": 25,\n  \"started_at\": \"2025-11-16T14:58:35.958633Z\",\n  \"ended_at\": \"2025-11-16T14:58:35.99673...",
-      "timestamp": "2025-11-16T14:58:36.002972"
+      "details": "Status: 200, Response: {\n  \"id\": \"8398ac75-04f7-47ed-8cbf-eb801ab2ebe1\",\n  \"user_id\": \"test-user-1763305160\",\n  \"duration_minutes\": 25,\n  \"started_at\": \"2025-11-16T14:59:21.343742Z\",\n  \"ended_at\": \"2025-11-16T14:59:21.42229...",
+      "timestamp": "2025-11-16T14:59:21.426992"
     },
     {
-      "test": "Get active exercises (/exercises/active)",
+      "test": "Update role to teacher (/profile/role)",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"message\": \"Role updated successfully\",\n  \"role\": \"teacher\"\n}...",
+      "timestamp": "2025-11-16T14:59:21.464034"
+    },
+    {
+      "test": "Role update validation",
+      "status": "PASS",
+      "details": "Role updated to teacher",
+      "timestamp": "2025-11-16T14:59:21.464537"
+    },
+    {
+      "test": "Update to invalid role",
+      "status": "PASS",
+      "details": "Status: 400, Response: {\n  \"detail\": \"Invalid role\"\n}...",
+      "timestamp": "2025-11-16T14:59:21.540076"
+    },
+    {
+      "test": "Update role to individual (/profile/role)",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"message\": \"Role updated successfully\",\n  \"role\": \"individual\"\n}...",
+      "timestamp": "2025-11-16T14:59:21.578278"
+    },
+    {
+      "test": "Get active exercises as individual (/exercises/active)",
       "status": "PASS",
       "details": "Status: 200, Response: [\n  {\n    \"id\": \"a86e16c2-5eff-4bd8-86c3-42c3a1021703\",\n    \"category\": \"active\",\n    \"title\": \"Jumping Jacks\",\n    \"description\": \"1. Stehe aufrecht mit F\\u00fc\\u00dfen zusammen und Armen an den Seit...",
-      "timestamp": "2025-11-16T14:58:36.313300"
+      "timestamp": "2025-11-16T14:59:21.903434"
     },
     {
-      "test": "Active exercises format",
+      "test": "Individual active exercises format",
       "status": "PASS",
-      "details": "Returned 7 exercises",
-      "timestamp": "2025-11-16T14:58:36.314660"
+      "details": "Returned 8 exercises",
+      "timestamp": "2025-11-16T14:59:21.905746"
     },
     {
-      "test": "Get relaxed exercises (/exercises/relaxed)",
+      "test": "Individual user group exercise filtering",
+      "status": "PASS",
+      "details": "No group exercises for individual user",
+      "timestamp": "2025-11-16T14:59:21.905774"
+    },
+    {
+      "test": "Get relaxed exercises as individual (/exercises/relaxed)",
       "status": "PASS",
       "details": "Status: 200, Response: [\n  {\n    \"id\": \"16c902cc-c076-458c-afd1-7e91c76ece71\",\n    \"category\": \"relaxed\",\n    \"title\": \"4-7-8 Atemtechnik\",\n    \"description\": \"1. Setze dich bequem hin mit geradem R\\u00fccken.\\n2. Lege die ...",
-      "timestamp": "2025-11-16T14:58:36.678441"
+      "timestamp": "2025-11-16T14:59:22.247457"
     },
     {
-      "test": "Relaxed exercises format",
+      "test": "Individual relaxed exercises format",
       "status": "PASS",
       "details": "Returned 7 exercises",
-      "timestamp": "2025-11-16T14:58:36.679936"
+      "timestamp": "2025-11-16T14:59:22.249523"
+    },
+    {
+      "test": "Switch to teacher role for exercise testing",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"message\": \"Role updated successfully\",\n  \"role\": \"teacher\"\n}...",
+      "timestamp": "2025-11-16T14:59:22.290946"
+    },
+    {
+      "test": "Get active exercises as teacher (/exercises/active)",
+      "status": "PASS",
+      "details": "Status: 200, Response: [\n  {\n    \"id\": \"a86e16c2-5eff-4bd8-86c3-42c3a1021703\",\n    \"category\": \"active\",\n    \"title\": \"Jumping Jacks\",\n    \"description\": \"1. Stehe aufrecht mit F\\u00fc\\u00dfen zusammen und Armen an den Seit...",
+      "timestamp": "2025-11-16T14:59:22.913101"
+    },
+    {
+      "test": "Teacher active exercises format",
+      "status": "PASS",
+      "details": "Returned 14 exercises",
+      "timestamp": "2025-11-16T14:59:22.915955"
+    },
+    {
+      "test": "Teacher exercise access",
+      "status": "PASS",
+      "details": "Teacher sees 14 vs individual 8",
+      "timestamp": "2025-11-16T14:59:22.915973"
+    },
+    {
+      "test": "Teacher group exercise access",
+      "status": "PASS",
+      "details": "Found 6 group exercises",
+      "timestamp": "2025-11-16T14:59:22.915985"
     },
     {
       "test": "Get invalid category exercises",
       "status": "PASS",
       "details": "Status: 400, Response: {\n  \"detail\": \"Invalid category\"\n}...",
-      "timestamp": "2025-11-16T14:58:36.718281"
+      "timestamp": "2025-11-16T14:59:22.954112"
+    },
+    {
+      "test": "Switch back to individual role",
+      "status": "PASS",
+      "details": "Status: 200, Response: {\n  \"message\": \"Role updated successfully\",\n  \"role\": \"individual\"\n}...",
+      "timestamp": "2025-11-16T14:59:22.990109"
     },
     {
       "test": "Exercise generation with image",
       "status": "PASS",
       "details": "Image generated successfully",
-      "timestamp": "2025-11-16T14:58:53.695221"
+      "timestamp": "2025-11-16T14:59:42.507855"
     }
   ],
-  "timestamp": "2025-11-16T14:58:54.027851"
+  "timestamp": "2025-11-16T14:59:42.850083"
 }
