@@ -123,11 +123,44 @@ const Dashboard = () => {
   };
 
   const onBreakComplete = () => {
-    setBreaksThisSession(prev => prev + 1);
+    const newBreaksCount = breaksThisSession + 1;
+    setBreaksThisSession(newBreaksCount);
     setShowExerciseModal(false);
+    
+    // Update stats immediately
+    const updatedStats = {
+      ...stats,
+      totalBreaks: stats.totalBreaks + 1
+    };
+    saveStats(updatedStats);
+    
     if (isRunning && timeLeft > 0) {
       setIsPaused(false);
       toast.success('Pause beendet! Weiter geht\'s!');
+    } else {
+      toast.success('Pause abgeschlossen!');
+    }
+  };
+
+  const handleTimerCompleteAction = (action) => {
+    // Save completed session stats
+    const updatedStats = {
+      ...stats,
+      totalStudyMinutes: stats.totalStudyMinutes + timerDuration,
+      totalBreaks: stats.totalBreaks + breaksThisSession
+    };
+    saveStats(updatedStats);
+    
+    setShowTimerComplete(false);
+    
+    if (action === 'continue') {
+      toast.info('Session beendet! Starte einen neuen Timer wenn du weitermachen möchtest.');
+      setTimeLeft(0);
+      setIsRunning(false);
+      setBreaksThisSession(0);
+    } else {
+      // Take break
+      takeBreak(action);
     }
   };
 
