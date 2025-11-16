@@ -12,6 +12,7 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
   const [exercises, setExercises] = useState([]);
   const [currentExercise, setCurrentExercise] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     fetchExercises();
