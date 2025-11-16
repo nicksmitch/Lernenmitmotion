@@ -102,7 +102,7 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout, updateUserRole }}>
+    <AuthContext.Provider value={{ user, setUser, logout, updateUserRole }}>
       <div className="App">
         <BrowserRouter>
           <Routes>
@@ -111,8 +111,12 @@ function App() {
               element={user ? <Navigate to="/dashboard" /> : <LandingPage />} 
             />
             <Route 
+              path="/auth" 
+              element={user ? <Navigate to="/dashboard" /> : <AuthPage />} 
+            />
+            <Route 
               path="/dashboard" 
-              element={user ? <Dashboard /> : <Navigate to="/" />} 
+              element={user ? <Dashboard /> : <Navigate to="/auth" />} 
             />
           </Routes>
         </BrowserRouter>
