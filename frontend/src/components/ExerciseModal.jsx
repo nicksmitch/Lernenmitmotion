@@ -101,8 +101,8 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
           ) : currentExercise ? (
             <>
               <div>
-                <h3 className="text-2xl font-bold text-emerald-900 mb-2">{currentExercise.title}</h3>
-                <p className="text-emerald-600">
+                <h3 className="text-xl sm:text-2xl font-bold text-emerald-900 mb-2">{currentExercise.title}</h3>
+                <p className="text-sm sm:text-base text-emerald-600">
                   Dauer: {currentExercise.duration_minutes} Minuten
                 </p>
               </div>
@@ -112,25 +112,25 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
                   <img 
                     src={currentExercise.image_url} 
                     alt={currentExercise.title}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-48 sm:h-64 object-cover"
                   />
                 </div>
               )}
 
-              <div className="bg-emerald-50 rounded-xl p-6">
-                <h4 className="font-semibold text-emerald-900 mb-3">Anleitung:</h4>
-                <div className="space-y-2 text-emerald-800">
+              <div className="bg-emerald-50 rounded-xl p-4 sm:p-6">
+                <h4 className="font-semibold text-emerald-900 mb-3 text-sm sm:text-base">Anleitung:</h4>
+                <div className="space-y-2 text-emerald-800 text-sm sm:text-base">
                   {currentExercise.description.split('\n').map((line, index) => (
                     <p key={index} className="leading-relaxed">{line}</p>
                   ))}
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button 
                   data-testid="complete-exercise-btn"
                   onClick={handleComplete}
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg rounded-xl"
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white py-5 sm:py-6 text-base sm:text-lg rounded-xl touch-manipulation"
                 >
                   <CheckCircle className="w-5 h-5 mr-2" />
                   Übung abgeschlossen
@@ -139,7 +139,7 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
                   data-testid="next-exercise-btn"
                   onClick={handleNext}
                   variant="outline"
-                  className="flex-1 py-6 text-lg border-emerald-300 rounded-xl"
+                  className="flex-1 py-5 sm:py-6 text-base sm:text-lg border-emerald-300 rounded-xl touch-manipulation"
                 >
                   Andere Übung
                 </Button>
