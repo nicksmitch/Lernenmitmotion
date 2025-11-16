@@ -243,6 +243,79 @@ export const exercises = [
     is_group_exercise: true
   },
   
+  {
+    id: '27',
+    category: 'active',
+    title: 'Stuhltanz (Reise nach Jerusalem)',
+    description: 'Für 8-15 Personen\n\n1. Stellt Stühle in einem Kreis (einer weniger als Teilnehmer).\n2. Musik an - alle gehen/tanzen um die Stühle.\n3. Musik stoppt - alle suchen einen Sitz.\n4. Wer keinen Platz findet, scheidet aus.\n5. Ein Stuhl wird entfernt.\n6. Nächste Runde beginnt.\n7. Gewinner ist wer am Ende sitzt.\n\nVorteile: Bewegung, Spaß, Reaktion, Auflockerung.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '28',
+    category: 'active',
+    title: 'Atomspiel',
+    description: 'Für ganze Klasse\n\n1. Alle bewegen sich frei im Raum.\n2. Lehrer ruft eine Zahl (z.B. "3").\n3. Alle bilden schnell Gruppen mit dieser Personenzahl.\n4. Wer übrig bleibt, macht 5 Jumping Jacks.\n5. Weiter bewegen im Raum.\n6. Neue Zahl wird gerufen.\n7. 5-7 Minuten spielen.\n\nVorteile: Bewegung, Schnelligkeit, Teambildung, Spaß.',
+    duration_minutes: 7,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '29',
+    category: 'active',
+    title: 'Zeitungstanz',
+    description: 'Für Paare\n\n1. Jedes Paar bekommt eine Zeitungsseite.\n2. Beide stehen darauf während Musik läuft.\n3. Musik stoppt - Zeitung wird halbiert.\n4. Musik weiter - tanzen auf kleinerer Fläche.\n5. Wer die Zeitung verlässt, scheidet aus.\n6. Zeitung wird immer kleiner.\n7. Gewinner sind die, die am längsten bleiben.\n\nVorteile: Balance, Koordination, Teamwork, lustig.',
+    duration_minutes: 5,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '30',
+    category: 'active',
+    title: 'Standbilder bauen',
+    description: 'Für Gruppen zu 4-6 Personen\n\n1. Lehrer gibt ein Thema vor (z.B. "Urlaub").\n2. Gruppen haben 2 Minuten Zeit.\n3. Baut ein Standbild nur mit euren Körpern.\n4. Alle müssen Teil des Bildes sein.\n5. Andere Gruppen raten.\n6. Nächste Gruppe ist dran.\n7. 3-4 Runden.\n\nVorteile: Kreativität, Teamwork, Bewegung, Spaß.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '31a',
+    category: 'active',
+    title: 'Luftballon Tennis',
+    description: 'Für Paare oder kleine Gruppen\n\n1. Bildet Paare, ein Luftballon pro Paar.\n2. Schlagt den Ballon hin und her.\n3. Er darf nicht den Boden berühren.\n4. Nach 2 Minuten: nur mit der schwachen Hand.\n5. Dann: nur mit dem Kopf.\n6. Wer die meisten Ballwechsel schafft, gewinnt.\n7. 5-6 Minuten total.\n\nVorteile: Hand-Augen-Koordination, Bewegung, Konzentration.',
+    duration_minutes: 6,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '32a',
+    category: 'active',
+    title: 'Spiegeltanz',
+    description: 'Für Paare\n\n1. Bildet Paare, steht euch gegenüber.\n2. Eine Person führt, macht langsame Bewegungen.\n3. Partner spiegelt exakt die Bewegungen.\n4. Nach 2 Minuten Rollenwechsel.\n5. Dann: beide führen abwechselnd.\n6. Musik dazu macht es lustiger.\n7. 5 Minuten üben.\n\nVorteile: Koordination, Konzentration, Aufmerksamkeit, Vertrauen.',
+    duration_minutes: 5,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '33a',
+    category: 'active',
+    title: 'Obstsalat',
+    description: 'Für ganze Klasse\n\n1. Alle sitzen im Kreis (einer steht in der Mitte).\n2. Jeder bekommt eine Frucht zugewiesen (Apfel, Birne, Banane).\n3. Mittelperson ruft eine Frucht.\n4. Alle mit dieser Frucht tauschen die Plätze.\n5. Mittelperson versucht einen Platz zu ergattern.\n6. Wer keinen Platz hat, ist neue Mittelperson.\n7. Bei "Obstsalat" wechseln alle.\n\nVorteile: Auflockerung, Reaktion, Bewegung, Spaß.',
+    duration_minutes: 5,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+  {
+    id: '34a',
+    category: 'active',
+    title: 'Menschliche Pyramide',
+    description: 'Für Gruppen zu 6-9 Personen\n\n1. Bildet Teams.\n2. Plant eine menschliche Pyramide.\n3. Stärkste Personen bilden die Basis (4 Personen).\n4. Zweite Reihe: 3 Personen knien auf Schultern.\n5. Dritte Reihe: 2 Personen.\n6. Spitze: 1 Person (leichteste).\n7. Foto machen, dann vorsichtig abbauen!\n\nVorteile: Teamwork, Vertrauen, Koordination, Kraft.\nACHTUNG: Nur mit Sicherheitsmaßnahmen!',
+    duration_minutes: 7,
+    roles: ['teacher'],
+    is_group_exercise: true
+  },
+
   // TEACHER GROUP EXERCISES - RELAXED
   {
     id: '31',
