@@ -228,23 +228,30 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button 
-                  data-testid="complete-exercise-btn"
-                  onClick={handleComplete}
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white py-5 sm:py-6 text-base sm:text-lg rounded-xl touch-manipulation"
-                >
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  Übung abgeschlossen
-                </Button>
-                <Button 
-                  data-testid="next-exercise-btn"
-                  onClick={handleNext}
-                  variant="outline"
-                  className="flex-1 py-5 sm:py-6 text-base sm:text-lg border-emerald-300 rounded-xl touch-manipulation"
-                >
-                  Andere Übung
-                </Button>
+              <div className="space-y-3">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <Button 
+                    data-testid="complete-exercise-btn"
+                    onClick={handleComplete}
+                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white py-5 sm:py-6 text-base sm:text-lg rounded-xl touch-manipulation"
+                  >
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Übung abgeschlossen
+                  </Button>
+                  <Button 
+                    data-testid="next-exercise-btn"
+                    onClick={handleNext}
+                    variant="outline"
+                    className="flex-1 py-5 sm:py-6 text-base sm:text-lg border-emerald-300 rounded-xl touch-manipulation"
+                  >
+                    Andere Übung
+                  </Button>
+                </div>
+                
+                {/* Voice control hint for mobile */}
+                <p className="text-xs sm:text-sm text-emerald-600 text-center">
+                  💡 Tipp: Nutze den Lautsprecher-Button oben, um dir die Übung vorlesen zu lassen
+                </p>
               </div>
             </>
           ) : (
