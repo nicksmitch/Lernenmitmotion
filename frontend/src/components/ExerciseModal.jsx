@@ -108,11 +108,12 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
               </div>
 
               {currentExercise.image_url && (
-                <div className="rounded-xl overflow-hidden bg-gray-100">
+                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                   <img 
                     src={currentExercise.image_url} 
                     alt={currentExercise.title}
-                    className="w-full h-48 sm:h-64 object-contain"
+                    className="w-full h-48 sm:h-64 object-contain p-2"
+                    style={{maxHeight: '16rem'}}
                   />
                 </div>
               )}
