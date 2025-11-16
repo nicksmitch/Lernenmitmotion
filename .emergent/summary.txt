@@ -1,0 +1,83 @@
+<analysis>
+The user, communicating in German, requested the development of a learning-support application named FocusFlow. The project began as a full-stack application using FastAPI and React with a MongoDB database. Initial features included a focus timer and a selection of active or relaxing break exercises with AI-generated images.
+
+The project evolved through several iterations based on user feedback. Key additions included user authentication, a role-based system (Individual vs. Teacher), responsive design for mobile devices, a text-to-speech feature for reading exercises aloud, and image display improvements.
+
+A significant pivot occurred when the user requested a standalone, backend-less web app for easy deployment on Vercel. The AI engineer successfully refactored the entire application into a client-side-only React/Vite project within a  directory.
+
+Subsequent features, including Spotify integration and a timer completion alarm, were added to this new client-side architecture. The most recent task involves fixing a statistics counter, enhancing the timer completion modal, and significantly increasing the number of exercises available in the app. The work was paused while adding more exercises to the  data file.
+
+The user's primary language is German. All future interactions must be in German.
+</analysis>
+
+<product_requirements>
+The FocusFlow application is a client-side web app designed to help students and pupils focus during study sessions.
+
+**Core Features:**
+1.  **Focus Timer**: Users can set a custom duration for their learning sessions.
+2.  **Break Exercises**: When the timer ends or is manually stopped, the app suggests a break. The user can choose between active and relaxing exercises. Each exercise is 3-7 minutes long, with instructions and an illustrative image.
+3.  **User Roles**:
+    *   **Individual User**: Access to personal exercises.
+    *   **Teacher**: Access to individual exercises plus special group/partner games for classroom settings.
+4.  **Text-to-Speech**: A read aloud function to narrate exercise instructions, with options to change voice and speed.
+5.  **Spotify Integration**: Users can connect their Spotify account to play music during focus sessions. The app defaults to a Binaural Beats Focus playlist.
+6.  **Statistics Tracking**: The dashboard displays statistics like total focus time and the number of completed breaks.
+7.  **Timer Alarm**: A modal window with a sound alert signals the end of a focus session. This modal allows the user to directly choose the type of break (active/relaxing).
+
+The application is built as a single, self-contained React/Vite project, ready for deployment on platforms like Vercel. All data, including exercises and images (as base64 strings), is stored client-side.
+</product_requirements>
+
+<key_technical_concepts>
+- **Frontend Framework**: React with Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/UI (custom components implemented)
+- **State Management**: React Hooks (, , )
+- **APIs**:
+  - Web Speech API (for text-to-speech)
+  - Spotify API (Implicit Grant Flow for client-side authentication)
+- **Architecture**: Standalone, client-side (backend-less) web application.
+- **Deployment Target**: Vercel
+</key_technical_concepts>
+
+<code_architecture>
+The project was initially a full-stack application but has been refactored into a single, standalone client-side web app located in the  directory. The original  and  directories are now obsolete.
+
+**Current Directory Structure ():**
+
+
+**Key File Summaries:**
+
+-   ****:
+    -   **Importance**: This is the core component of the application, containing the main user interface after login/role selection. It integrates the timer, statistics display, exercise selection logic, and the Spotify player.
+    -   **Recent Changes**: It was heavily modified to fix a stats counter bug, integrate the , and replace the full  with the  version to improve layout. The logic for updating the breaks completed stat () was recently added.
+
+-   ****:
+    -   **Importance**: This file acts as the client-side database. It contains a JavaScript array of all exercise objects, including their name, description, category (active/relaxing), type (individual/group), and a base64-encoded image.
+    -   **Recent Changes**: The file is currently being expanded to increase the total number of exercises to 40-50, as per the user's latest request. The AI was in the process of adding more group exercises for the 'teacher' role.
+
+-   ****:
+    -   **Importance**: This modal component alerts the user when their focus session timer runs out.
+    -   **Recent Changes**: It was recently created and then modified to be larger, play a sound, and include buttons that allow the user to directly select an active or relaxing break. The CSS was updated to increase its size () and style the new buttons.
+
+-   ****:
+    -   **Importance**: Displays the selected exercise's details, including the image, instructions, and the Read Aloud button.
+    -   **Recent Changes**: The styling for the image was updated to use  instead of  to prevent cropping. It was also updated to include the text-to-speech functionality and controls for voice and speed selection.
+</code_architecture>
+
+<pending_tasks>
+- **Professional Text-to-Speech**: The user was informed about the limitations of the Web Speech API. Implementing a higher-quality, professional TTS service (like OpenAI TTS) was suggested as a future improvement but has not been actioned.
+- **Subscription Model**: A subscription feature was briefly mentioned by the user for a future version but is not part of the current scope.
+</pending_tasks>
+
+<current_work>
+The AI engineer was actively working on a multi-part user request from **Chat Message 322**:
+
+1.  **Fix Breaks Completed Counter**: The user reported that the statistics for completed breaks were not updating. The AI addressed this by adding logic to the  file, specifically incrementing  when the timer finishes.
+    
+2.  **Enhance Timer Completion Modal**: The user requested the modal that appears when the timer ends to be larger, play a sound, and include direct selection buttons for active or relaxing breaks. The AI created  and then modified it to meet these requirements, updating its size, sound playback, and adding the requested buttons.
+3.  **Add More Exercises**: The user requested a significant increase in the number of exercises, aiming for a total of 40-50. The AI began this task by editing the  file to add more exercises. The last action taken was adding more group exercises for the 'teacher' role before the trajectory ended.
+</current_work>
+
+<optional_next_step>
+Continue adding a variety of individual and group exercises to  until the total count is between 40 and 50, then verify the changes and confirm with the user.
+</optional_next_step>
