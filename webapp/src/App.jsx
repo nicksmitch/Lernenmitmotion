@@ -1,8 +1,10 @@
 import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'sonner';
+import { supabase } from './lib/supabaseClient';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
+import AuthPage from './pages/AuthPage';
 import './App.css';
 
 // Auth Context
@@ -20,43 +22,66 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Load user from localStorage
-    const savedUser = localStorage.getItem(STORAGE_KEYS.USER);
-    if (savedUser) {
+    // Check Supabase session on mount
+    const initAuth = async () => {
       try {
-        setUser(JSON.parse(savedUser));
-      } catch (e) {
-        console.error('Error loading user:', e);
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (session?.user) {
+          // User is logged in with Supabase
+          const userData = {
+            id: session.user.id,
+            email: session.user.email,
+            name: session.user.user_metadata?.name || session.user.email.split('@')[0],
+            role: 'individual',
+            createdAt: session.user.created_at
+          };
+          
+          setUser(userData);
+          localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(userData));
+        }
+      } catch (error) {
+        console.error('Error checking auth session:', error);
+      } finally {
+        setLoading(false);
       }
-    }
-    setLoading(false);
+    };
+
+    initAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session?.user) {
+        const userData = {
+          id: session.user.id,
+          email: session.user.email,
+          name: session.user.user_metadata?.name || session.user.email.split('@')[0],
+          role: 'individual',
+          createdAt: session.user.created_at
+        };
+        
+        setUser(userData);
+        localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(userData));
+      } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+        localStorage.removeItem(STORAGE_KEYS.USER);
+      }
+    });
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
-  const login = (name) => {
-    const newUser = {
-      id: Date.now().toString(),
-      name: name,
-      role: 'individual',
-      createdAt: new Date().toISOString()
-    };
-    
-    setUser(newUser);
-    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(newUser));
-    
-    // Initialize stats
-    const stats = {
-      userId: newUser.id,
-      totalStudyMinutes: 0,
-      totalBreaks: 0,
-      lastTimerDuration: 25
-    };
-    localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(stats));
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem(STORAGE_KEYS.USER);
-    window.location.href = '/';
+  const logout = async () => {
+    try {
+      await supabase.auth.signOut();
+      setUser(null);
+      localStorage.removeItem(STORAGE_KEYS.USER);
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   const updateUserRole = (newRole) => {
