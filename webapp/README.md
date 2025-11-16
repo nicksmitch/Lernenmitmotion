@@ -148,11 +148,13 @@ webapp/
 
 - **Framework**: React 18
 - **Build Tool**: Vite 5
+- **Auth Backend**: Supabase
 - **Styling**: Tailwind CSS 3
+- **UI Components**: shadcn/ui
 - **Icons**: Lucide React
 - **Routing**: React Router v6
 - **Notifications**: Sonner
-- **Storage**: LocalStorage
+- **Storage**: LocalStorage (für Statistiken)
 - **TTS**: Web Speech API
 
 ## Verwendung
