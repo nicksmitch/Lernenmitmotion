@@ -18,7 +18,7 @@ const LandingPage = () => {
           </div>
           <Button 
             data-testid="header-login-btn"
-            onClick={handleLogin}
+            onClick={() => navigate('/auth')}
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full"
           >
             Anmelden
