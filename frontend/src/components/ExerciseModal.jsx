@@ -99,7 +99,7 @@ const ExerciseModal = ({ category, userRole, onClose, onComplete }) => {
 
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = 'de-DE';
-    utterance.rate = 0.85; // Slower, more relaxed pace
+    utterance.rate = voiceSpeed; // User-adjustable speed
     utterance.pitch = 1.1; // Slightly higher for friendlier tone
     utterance.volume = 1.0;
 
