@@ -87,7 +87,7 @@ const LandingPage = () => {
           </p>
           <Button 
             data-testid="cta-start-btn"
-            onClick={handleLogin}
+            onClick={() => navigate('/auth')}
             size="lg"
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-6 text-lg rounded-full shadow-lg"
           >
