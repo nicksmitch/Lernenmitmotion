@@ -30,6 +30,12 @@ npm run dev
 # App öffnet sich auf http://localhost:5173
 ```
 
+### 🎵 Spotify Integration (Optional)
+Für Hintergrundmusik während Lernphasen:
+1. Siehe **[SPOTIFY_SETUP.md](./SPOTIFY_SETUP.md)** für Anleitung
+2. Benötigt: Spotify Developer Account + Client ID
+3. Spotify Premium für Wiedergabe erforderlich
+
 ## Build für Production
 
 ```bash
