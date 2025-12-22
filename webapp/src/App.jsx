@@ -5,6 +5,8 @@ import { supabase } from './lib/supabaseClient';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import AuthPage from './pages/AuthPage';
+import Impressum from './pages/Impressum';
+import Datenschutz from './pages/Datenschutz';
 import './App.css';
 
 // Auth Context
