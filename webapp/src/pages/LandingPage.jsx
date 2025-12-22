@@ -97,8 +97,26 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center text-emerald-600">
-        <p>© 2025 FocusFlow - Lernen mit Fokus und Balance</p>
+      <footer className="container mx-auto px-4 py-8 text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-emerald-600">
+          <span>© 2025 FocusFlow - Lernen mit Fokus und Balance</span>
+          <span className="hidden sm:inline">•</span>
+          <div className="flex gap-4">
+            <button
+              onClick={() => navigate('/impressum')}
+              className="hover:text-emerald-700 underline transition-colors"
+            >
+              Impressum
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => navigate('/datenschutz')}
+              className="hover:text-emerald-700 underline transition-colors"
+            >
+              Datenschutz
+            </button>
+          </div>
+        </div>
       </footer>
     </div>
   );
