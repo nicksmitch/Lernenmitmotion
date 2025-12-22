@@ -235,8 +235,32 @@ function AuthPage() {
 
         {/* Footer Note */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          Mit der Registrierung stimmst du unseren Nutzungsbedingungen zu.
+          Mit der Registrierung stimmst du unseren{' '}
+          <button
+            onClick={() => navigate('/datenschutz')}
+            className="text-emerald-600 hover:text-emerald-700 underline"
+          >
+            Datenschutzbestimmungen
+          </button>
+          {' '}zu.
         </p>
+        
+        {/* Legal Links */}
+        <div className="flex justify-center gap-4 text-sm text-gray-500 mt-4">
+          <button
+            onClick={() => navigate('/impressum')}
+            className="hover:text-emerald-600 underline transition-colors"
+          >
+            Impressum
+          </button>
+          <span>•</span>
+          <button
+            onClick={() => navigate('/datenschutz')}
+            className="hover:text-emerald-600 underline transition-colors"
+          >
+            Datenschutz
+          </button>
+        </div>
       </div>
     </div>
   );
