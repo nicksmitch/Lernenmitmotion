@@ -120,6 +120,8 @@ function App() {
               path="/dashboard" 
               element={user ? <Dashboard /> : <Navigate to="/auth" />} 
             />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
           </Routes>
         </BrowserRouter>
         <Toaster position="top-right" />
