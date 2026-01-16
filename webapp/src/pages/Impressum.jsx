@@ -13,8 +13,8 @@ export default function Impressum() {
 
       <p>
         <strong>Nick Mitchell</strong><br />
-        DEINE STRASSE UND HAUSNUMMER<br />
-        PLZ ORT<br />
+        Weißenseer Weg 12<br />
+        10367 Berlin<br />
         Deutschland
       </p>
 
