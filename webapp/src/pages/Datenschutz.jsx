@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
+
 export default function Datenschutz() {
   return (
     <main style={{ padding: "2rem", maxWidth: 900, margin: "0 auto" }}>
+      <nav style={{ marginBottom: "1.5rem" }}>
+        <Link to="/">← Zurück zur Startseite</Link>
+      </nav>
+
       <h1>Datenschutzerklärung</h1>
 
       <p>
