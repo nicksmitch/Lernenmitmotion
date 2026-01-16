@@ -7,7 +7,6 @@ export const exercises = [
     title: 'Jumping Jacks',
     description: '1. Stehe aufrecht mit Füßen zusammen und Armen an den Seiten.\n2. Springe und spreize gleichzeitig deine Beine schulterbreit.\n3. Hebe gleichzeitig deine Arme über den Kopf.\n4. Springe zurück in die Ausgangsposition.\n5. Wiederhole für 3 Minuten in einem angenehmen Tempo.\n\nVorteile: Aktiviert den Kreislauf, verbessert die Durchblutung und steigert die Energie.',
     duration_minutes: 3,
-    Materials: 2 Balls
     roles: ['individual', 'teacher'],
     is_group_exercise: false
   },
