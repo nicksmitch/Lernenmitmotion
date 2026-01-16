@@ -10,43 +10,7 @@ export const exercises = [
     roles: ['individual', 'teacher'],
     is_group_exercise: false
   },
-  {
-    id: '2',
-    category: 'active',
-    title: 'Schreibtisch-Liegestütze',
-    description: '1. Stelle dich etwa einen Meter vor deinen Schreibtisch.\n2. Lege beide Hände schulterbreit auf die Tischkante.\n3. Halte deinen Körper gerade von Kopf bis Fuß.\n4. Beuge die Arme und senke deinen Oberkörper zum Tisch.\n5. Drücke dich zurück in die Ausgangsposition.\n6. Wiederhole 3 Sätze à 10-15 Wiederholungen.\n\nVorteile: Stärkt Brust, Schultern und Arme, löst Verspannungen im Oberkörper.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '3',
-    category: 'active',
-    title: 'Kniebeugen',
-    description: '1. Stehe mit Füßen schulterbreit auseinander.\n2. Strecke deine Arme nach vorne für Balance.\n3. Senke deinen Körper, als würdest du dich setzen.\n4. Halte die Knie hinter den Zehenspitzen.\n5. Drücke dich durch die Fersen zurück nach oben.\n6. Wiederhole 3 Sätze à 12-15 Wiederholungen.\n\nVorteile: Aktiviert große Muskelgruppen, verbessert die Durchblutung der Beine.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '4',
-    category: 'active',
-    title: 'Nacken- und Schulterkreisen',
-    description: '1. Setze dich aufrecht hin oder stehe gerade.\n2. Lasse deine Schultern entspannt hängen.\n3. Kreise langsam mit den Schultern nach hinten (10 Mal).\n4. Kreise langsam mit den Schultern nach vorne (10 Mal).\n5. Neige den Kopf sanft zur rechten Seite (10 Sekunden halten).\n6. Neige den Kopf sanft zur linken Seite (10 Sekunden halten).\n7. Wiederhole 2-3 Mal.\n\nVorteile: Löst Verspannungen im Nacken, verbessert die Beweglichkeit.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '5',
-    category: 'active',
-    title: 'Ausfallschritte',
-    description: '1. Stehe aufrecht mit Händen an den Hüften.\n2. Mache einen großen Schritt nach vorne mit dem rechten Fuß.\n3. Senke deinen Körper, bis beide Knie 90-Grad-Winkel bilden.\n4. Drücke dich mit dem vorderen Fuß zurück zur Ausgangsposition.\n5. Wechsle das Bein.\n6. Wiederhole 10 Ausfallschritte pro Bein (3 Sätze).\n\nVorteile: Kräftigt Beine und Po, verbessert Balance und Koordination.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  
+
   // INDIVIDUAL RELAXED EXERCISES
   {
     id: '11',
@@ -54,97 +18,6 @@ export const exercises = [
     title: '4-7-8 Atemtechnik',
     description: '1. Setze dich bequem hin mit geradem Rücken.\n2. Lege die Zungenspitze hinter die oberen Schneidezähne.\n3. Atme vollständig durch den Mund aus.\n4. Schließe den Mund und atme leise durch die Nase ein - zähle dabei bis 4.\n5. Halte den Atem an und zähle bis 7.\n6. Atme vollständig durch den Mund aus und zähle dabei bis 8.\n7. Dies ist ein Atemzyklus. Wiederhole 4-8 Zyklen.\n\nVorteile: Reduziert Stress und Angst, verbessert die Sauerstoffversorgung.',
     duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '12',
-    category: 'relaxed',
-    title: 'Progressive Muskelentspannung',
-    description: '1. Setze oder lege dich bequem hin.\n2. Beginne mit den Füßen: Spanne die Muskeln für 5 Sekunden an.\n3. Entspanne die Muskeln vollständig für 10 Sekunden.\n4. Arbeite dich nach oben: Waden, Oberschenkel, Bauch, Arme.\n5. Spanne jeweils eine Muskelgruppe an und entspanne sie bewusst.\n6. Achte auf den Unterschied zwischen Anspannung und Entspannung.\n7. Schließe mit tiefen Atemzügen ab.\n\nVorteile: Löst körperliche Verspannungen, reduziert Stress.',
-    duration_minutes: 7,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '13',
-    category: 'relaxed',
-    title: 'Achtsamkeitsmeditation',
-    description: '1. Setze dich bequem hin und schließe die Augen.\n2. Richte deine Aufmerksamkeit auf deinen Atem.\n3. Beobachte, wie der Atem ein- und ausströmt.\n4. Wenn Gedanken auftauchen, nimm sie wahr ohne zu urteilen.\n5. Kehre sanft zum Atem zurück.\n6. Spüre den gegenwärtigen Moment.\n7. Praktiziere für 5-7 Minuten.\n\nVorteile: Verbessert Konzentration und Fokus, reduziert mentalen Stress.',
-    duration_minutes: 6,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  
-  {
-    id: '6',
-    category: 'active',
-    title: 'Armkreisen',
-    description: '1. Stehe mit Füßen schulterbreit auseinander.\n2. Strecke beide Arme seitlich aus (T-Position).\n3. Mache kleine Kreise vorwärts für 30 Sekunden.\n4. Mache kleine Kreise rückwärts für 30 Sekunden.\n5. Vergrößere die Kreise - vorwärts 30 Sekunden.\n6. Große Kreise rückwärts 30 Sekunden.\n7. Schüttle die Arme aus.\n\nVorteile: Lockert Schultern, verbessert Durchblutung in Armen.',
-    duration_minutes: 3,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '7',
-    category: 'active',
-    title: 'Auf der Stelle Joggen',
-    description: '1. Stehe aufrecht mit lockeren Armen.\n2. Beginne auf der Stelle zu joggen.\n3. Hebe die Knie etwa hüfthoch.\n4. Schwinge die Arme mit.\n5. Steigere das Tempo nach 1 Minute.\n6. Jogge 3-4 Minuten im angenehmen Tempo.\n7. Langsam auslaufen lassen.\n\nVorteile: Aktiviert Herz-Kreislauf, erhöht Energie, verbessert Durchblutung.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '8',
-    category: 'active',
-    title: 'Planks (Unterarmstütz)',
-    description: '1. Gehe in den Vierfüßlerstand.\n2. Stütze dich auf die Unterarme.\n3. Strecke die Beine nach hinten aus.\n4. Halte deinen Körper gerade wie ein Brett.\n5. Spanne Bauch und Po an.\n6. Halte 20-30 Sekunden.\n7. Pause 15 Sekunden, wiederhole 3-4 Mal.\n\nVorteile: Stärkt Rumpfmuskulatur, verbessert Körperstabilität, Haltung.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '9',
-    category: 'active',
-    title: 'Seitliche Ausfallschritte',
-    description: '1. Stehe mit weitem Stand.\n2. Verlagere Gewicht auf das rechte Bein und beuge es.\n3. Das linke Bein bleibt gestreckt.\n4. Drücke dich zurück zur Mitte.\n5. Wechsle die Seite.\n6. 10 Wiederholungen pro Seite.\n7. Mache 3 Sätze.\n\nVorteile: Trainiert Oberschenkelinnenseite, verbessert seitliche Mobilität.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '10',
-    category: 'active',
-    title: 'Bergsteiger (Mountain Climbers)',
-    description: '1. Starte in Liegestütz-Position.\n2. Ziehe rechtes Knie zur Brust.\n3. Springe und wechsle die Beine in der Luft.\n4. Ziehe linkes Knie zur Brust.\n5. Wechsle schnell die Beine im Rhythmus.\n6. Mache 30 Sekunden, Pause, wiederhole.\n7. 3-4 Durchgänge.\n\nVorteile: Ganzkörpertraining, verbessert Kondition und Koordination.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '11a',
-    category: 'active',
-    title: 'Handgelenk- und Fingerübungen',
-    description: '1. Strecke beide Arme nach vorne.\n2. Mache Fäuste und öffne sie wieder (10x).\n3. Kreise mit den Handgelenken - 10x jede Richtung.\n4. Spreize alle Finger weit auseinander.\n5. Berühre jeden Finger mit dem Daumen.\n6. Schüttle die Hände locker aus.\n7. Massiere kurz die Handflächen.\n\nVorteile: Wichtig nach langem Schreiben/Tippen, beugt RSI vor.',
-    duration_minutes: 3,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '12a',
-    category: 'active',
-    title: 'Treppensteigen Simulation',
-    description: '1. Stelle einen stabilen Hocker oder Stufe bereit.\n2. Steige mit rechtem Fuß hinauf.\n3. Ziehe linken Fuß nach.\n4. Steige rechts wieder herunter.\n5. Steige links wieder herunter.\n6. Wechsle das Führbein nach 30 Sekunden.\n7. 3-4 Minuten im Wechsel.\n\nVorteile: Simuliert Treppensteigen, stärkt Beine und Po.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '13a',
-    category: 'active',
-    title: 'Seitliche Rumpfbeugen',
-    description: '1. Stehe mit Füßen hüftbreit.\n2. Hebe rechten Arm über den Kopf.\n3. Beuge den Oberkörper zur linken Seite.\n4. Halte 10 Sekunden.\n5. Komme zurück zur Mitte.\n6. Wechsle die Seite.\n7. Je Seite 8-10 Wiederholungen.\n\nVorteile: Dehnt seitliche Rumpfmuskulatur, verbessert Flexibilität.',
-    duration_minutes: 4,
     roles: ['individual', 'teacher'],
     is_group_exercise: false
   },
@@ -159,69 +32,6 @@ export const exercises = [
     roles: ['individual', 'teacher'],
     is_group_exercise: false
   },
-  {
-    id: '15a',
-    category: 'relaxed',
-    title: 'Sitzende Vorwärtsbeuge',
-    description: '1. Setze dich mit ausgestreckten Beinen.\n2. Atme tief ein und strecke die Arme nach oben.\n3. Atme aus und beuge dich langsam nach vorne.\n4. Greife zu deinen Füßen (so weit du kannst).\n5. Halte die Position 1-2 Minuten.\n6. Atme ruhig weiter.\n7. Komme langsam zurück.\n\nVorteile: Dehnt Rücken und Beinrückseite, sehr entspannend.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '16a',
-    category: 'relaxed',
-    title: 'Schulter-Nacken Entspannung',
-    description: '1. Setze dich aufrecht hin.\n2. Ziehe beide Schultern zu den Ohren hoch.\n3. Halte 5 Sekunden angespannt.\n4. Lasse sie plötzlich fallen und entspanne.\n5. Spüre die Entspannung.\n6. Wiederhole 8-10 Mal.\n7. Schließe mit tiefen Atemzügen.\n\nVorteile: Löst Verspannungen im Schulter-Nacken-Bereich.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '17a',
-    category: 'relaxed',
-    title: 'Wechselatmung (Nadi Shodhana)',
-    description: '1. Setze dich bequem mit geradem Rücken.\n2. Schließe mit dem rechten Daumen das rechte Nasenloch.\n3. Atme links ein.\n4. Schließe mit dem Ringfinger das linke Nasenloch.\n5. Öffne rechts und atme rechts aus.\n6. Atme rechts ein, wechsle, links aus.\n7. 5-7 Minuten üben.\n\nVorteile: Balanciert linke/rechte Gehirnhälfte, beruhigt.',
-    duration_minutes: 7,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '18a',
-    category: 'relaxed',
-    title: 'Kinderstellung (Yoga)',
-    description: '1. Knie dich hin, Gesäß auf den Fersen.\n2. Beuge dich nach vorne.\n3. Lege die Stirn auf dem Boden ab.\n4. Strecke die Arme nach vorne oder lege sie neben den Körper.\n5. Atme ruhig und tief.\n6. Halte 3-5 Minuten.\n7. Komme langsam zurück.\n\nVorteile: Sehr entspannend, dehnt Rücken, beruhigend.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '19a',
-    category: 'relaxed',
-    title: 'Geführte Muskelentspannung Kurzform',
-    description: '1. Lege dich bequem hin.\n2. Spanne für 5 Sek. die Füße an, dann entspannen.\n3. Spanne für 5 Sek. die Beine an, dann entspannen.\n4. Spanne für 5 Sek. den Po an, dann entspannen.\n5. Spanne für 5 Sek. den Bauch an, dann entspannen.\n6. Spanne für 5 Sek. die Arme an, dann entspannen.\n7. Genieße die totale Entspannung für 2 Minuten.\n\nVorteile: Schnelle Ganzkörper-Entspannung.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '20a',
-    category: 'relaxed',
-    title: 'Autogenes Training Kurzform',
-    description: '1. Lege dich entspannt hin.\n2. Sage innerlich: "Mein rechter Arm ist schwer".\n3. Wiederhole 3x, spüre die Schwere.\n4. "Mein rechter Arm ist warm" - 3x wiederholen.\n5. Mache dasselbe mit linkem Arm.\n6. Dann beide Beine.\n7. Abschluss: "Ich bin ganz ruhig".\n\nVorteile: Tiefe Entspannung durch Autosuggestion.',
-    duration_minutes: 6,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '21a',
-    category: 'relaxed',
-    title: 'Sitzende Meditation mit Mantra',
-    description: '1. Setze dich bequem im Schneidersitz.\n2. Schließe die Augen.\n3. Wähle ein Wort: "Ruhe", "Frieden" oder "Om".\n4. Wiederhole es innerlich im Rhythmus deines Atems.\n5. Bei Gedanken: zurück zum Mantra.\n6. 5-7 Minuten praktizieren.\n7. Öffne langsam die Augen.\n\nVorteile: Beruhigt Gedankenfluss, fördert innere Ruhe.',
-    duration_minutes: 7,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
 
   // TEACHER GROUP EXERCISES - ACTIVE
   {
@@ -230,88 +40,6 @@ export const exercises = [
     title: 'Partner-Koordinationsspiel',
     description: 'Für 2-4 Personen\n\n1. Bildet Paare und stellt euch gegenüber.\n2. Eine Person führt, die andere spiegelt die Bewegungen.\n3. Macht langsame Armbewegungen (1 Minute).\n4. Wechselt die Rollen.\n5. Steigert das Tempo langsam.\n6. Fügt Beinbewegungen hinzu.\n\nVorteile: Verbessert Koordination, Konzentration und Teamwork.',
     duration_minutes: 4,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '22',
-    category: 'active',
-    title: 'Gordischer Knoten',
-    description: 'Für 6-12 Personen\n\n1. Alle stehen im Kreis, eng beieinander.\n2. Streckt eure rechte Hand aus und greift eine andere Hand (nicht die direkt neben euch).\n3. Streckt eure linke Hand aus und greift eine andere Hand.\n4. Ohne Hände loszulassen, versucht den Knoten zu entwirren.\n5. Kommuniziert und arbeitet zusammen.\n6. Ziel: Ein Kreis oder zwei verschlungene Kreise.\n\nVorteile: Teamwork, Problemlösung, körperliche Aktivierung.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  
-  {
-    id: '27',
-    category: 'active',
-    title: 'Stuhltanz (Reise nach Jerusalem)',
-    description: 'Für 8-15 Personen\n\n1. Stellt Stühle in einem Kreis (einer weniger als Teilnehmer).\n2. Musik an - alle gehen/tanzen um die Stühle.\n3. Musik stoppt - alle suchen einen Sitz.\n4. Wer keinen Platz findet, scheidet aus.\n5. Ein Stuhl wird entfernt.\n6. Nächste Runde beginnt.\n7. Gewinner ist wer am Ende sitzt.\n\nVorteile: Bewegung, Spaß, Reaktion, Auflockerung.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '28',
-    category: 'active',
-    title: 'Atomspiel',
-    description: 'Für ganze Klasse\n\n1. Alle bewegen sich frei im Raum.\n2. Lehrer ruft eine Zahl (z.B. "3").\n3. Alle bilden schnell Gruppen mit dieser Personenzahl.\n4. Wer übrig bleibt, macht 5 Jumping Jacks.\n5. Weiter bewegen im Raum.\n6. Neue Zahl wird gerufen.\n7. 5-7 Minuten spielen.\n\nVorteile: Bewegung, Schnelligkeit, Teambildung, Spaß.',
-    duration_minutes: 7,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '29',
-    category: 'active',
-    title: 'Zeitungstanz',
-    description: 'Für Paare\n\n1. Jedes Paar bekommt eine Zeitungsseite.\n2. Beide stehen darauf während Musik läuft.\n3. Musik stoppt - Zeitung wird halbiert.\n4. Musik weiter - tanzen auf kleinerer Fläche.\n5. Wer die Zeitung verlässt, scheidet aus.\n6. Zeitung wird immer kleiner.\n7. Gewinner sind die, die am längsten bleiben.\n\nVorteile: Balance, Koordination, Teamwork, lustig.',
-    duration_minutes: 5,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '30',
-    category: 'active',
-    title: 'Standbilder bauen',
-    description: 'Für Gruppen zu 4-6 Personen\n\n1. Lehrer gibt ein Thema vor (z.B. "Urlaub").\n2. Gruppen haben 2 Minuten Zeit.\n3. Baut ein Standbild nur mit euren Körpern.\n4. Alle müssen Teil des Bildes sein.\n5. Andere Gruppen raten.\n6. Nächste Gruppe ist dran.\n7. 3-4 Runden.\n\nVorteile: Kreativität, Teamwork, Bewegung, Spaß.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '31a',
-    category: 'active',
-    title: 'Luftballon Tennis',
-    description: 'Für Paare oder kleine Gruppen\n\n1. Bildet Paare, ein Luftballon pro Paar.\n2. Schlagt den Ballon hin und her.\n3. Er darf nicht den Boden berühren.\n4. Nach 2 Minuten: nur mit der schwachen Hand.\n5. Dann: nur mit dem Kopf.\n6. Wer die meisten Ballwechsel schafft, gewinnt.\n7. 5-6 Minuten total.\n\nVorteile: Hand-Augen-Koordination, Bewegung, Konzentration.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '32a',
-    category: 'active',
-    title: 'Spiegeltanz',
-    description: 'Für Paare\n\n1. Bildet Paare, steht euch gegenüber.\n2. Eine Person führt, macht langsame Bewegungen.\n3. Partner spiegelt exakt die Bewegungen.\n4. Nach 2 Minuten Rollenwechsel.\n5. Dann: beide führen abwechselnd.\n6. Musik dazu macht es lustiger.\n7. 5 Minuten üben.\n\nVorteile: Koordination, Konzentration, Aufmerksamkeit, Vertrauen.',
-    duration_minutes: 5,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '33a',
-    category: 'active',
-    title: 'Obstsalat',
-    description: 'Für ganze Klasse\n\n1. Alle sitzen im Kreis (einer steht in der Mitte).\n2. Jeder bekommt eine Frucht zugewiesen (Apfel, Birne, Banane).\n3. Mittelperson ruft eine Frucht.\n4. Alle mit dieser Frucht tauschen die Plätze.\n5. Mittelperson versucht einen Platz zu ergattern.\n6. Wer keinen Platz hat, ist neue Mittelperson.\n7. Bei "Obstsalat" wechseln alle.\n\nVorteile: Auflockerung, Reaktion, Bewegung, Spaß.',
-    duration_minutes: 5,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '34a',
-    category: 'active',
-    title: 'Menschliche Pyramide',
-    description: 'Für Gruppen zu 6-9 Personen\n\n1. Bildet Teams.\n2. Plant eine menschliche Pyramide.\n3. Stärkste Personen bilden die Basis (4 Personen).\n4. Zweite Reihe: 3 Personen knien auf Schultern.\n5. Dritte Reihe: 2 Personen.\n6. Spitze: 1 Person (leichteste).\n7. Foto machen, dann vorsichtig abbauen!\n\nVorteile: Teamwork, Vertrauen, Koordination, Kraft.\nACHTUNG: Nur mit Sicherheitsmaßnahmen!',
-    duration_minutes: 7,
     roles: ['teacher'],
     is_group_exercise: true
   },
@@ -326,88 +54,7 @@ export const exercises = [
     roles: ['teacher'],
     is_group_exercise: true
   },
-  {
-    id: '32',
-    category: 'relaxed',
-    title: 'Stille Minute Challenge',
-    description: 'Für ganze Klasse\n\n1. Alle setzen oder stehen bequem.\n2. Schließt die Augen.\n3. Eine Minute absolute Stille - keine Bewegung, kein Geräusch.\n4. Konzentriert euch nur auf euren Atem.\n5. Öffnet nach der Minute langsam die Augen.\n6. Wer hat es geschafft?\n\nVorteile: Fördert Selbstkontrolle, Konzentration und innere Ruhe.',
-    duration_minutes: 3,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '33b',
-    category: 'relaxed',
-    title: 'Fantasiereise als Gruppe',
-    description: 'Für ganze Klasse\n\n1. Alle legen sich entspannt hin oder setzen sich.\n2. Schließt die Augen.\n3. Lehrer liest langsam eine Fantasiereise vor.\n4. Z.B.: Strand, Wald, Wolkenreise.\n5. Beschreibt Geräusche, Gerüche, Gefühle.\n6. Nehmt euch 5-7 Minuten Zeit.\n7. Langsam zurück ins Hier und Jetzt.\n\nVorteile: Tiefe Entspannung, fördert Vorstellungskraft, gemeinsame Ruhe.',
-    duration_minutes: 7,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '34b',
-    category: 'relaxed',
-    title: 'Partnermassage Schultern',
-    description: 'Für Paare\n\n1. Bildet Paare, eine Person sitzt, eine steht.\n2. Stehende Person massiert sanft Schultern und Nacken.\n3. Verwendet kreisende Bewegungen.\n4. Fragt nach Druck (angenehm?).\n5. Nach 2-3 Minuten Rollentausch.\n6. Beide entspannen sich gegenseitig.\n7. Bedankt euch am Ende.\n\nVorteile: Entspannt Schulter-Nacken, fördert soziales Miteinander.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '35b',
-    category: 'relaxed',
-    title: 'Klangmeditation mit Gong/Klangschale',
-    description: 'Für ganze Klasse\n\n1. Alle liegen entspannt auf dem Boden.\n2. Schließt die Augen.\n3. Lehrer spielt Klangschale oder Gong.\n4. Konzentriert euch nur auf den Klang.\n5. Spürt die Vibrationen im Körper.\n6. Lasst den Klang durch euch fließen.\n7. 5-7 Minuten in Stille nachspüren.\n\nVorteile: Tiefenentspannung durch Klangvibrationen.',
-    duration_minutes: 7,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '36b',
-    category: 'relaxed',
-    title: 'Dankbarkeitskreis',
-    description: 'Für ganze Klasse\n\n1. Setzt euch in einen Kreis.\n2. Jeder überlegt sich 3 Dinge, für die er heute dankbar ist.\n3. Reihum teilt jeder eine Sache (freiwillig).\n4. Keine Kommentare, nur zuhören.\n5. Schließt die Augen nach der Runde.\n6. Atmet gemeinsam 3x tief.\n7. Spürt die positive Energie.\n\nVorteile: Fördert Dankbarkeit, positive Stimmung, Gemeinschaft.',
-    duration_minutes: 5,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '37b',
-    category: 'relaxed',
-    title: 'Körperreise in der Gruppe',
-    description: 'Für ganze Klasse\n\n1. Alle liegen entspannt auf dem Rücken.\n2. Lehrer leitet an: "Spürt eure Füße..."\n3. Wandert durch alle Körperteile von unten nach oben.\n4. "Entspannt bewusst jedes Teil."\n5. Füße → Beine → Rumpf → Arme → Kopf.\n6. Bleibt 1 Minute in Totalentspannung.\n7. Langsam bewegen und strecken.\n\nVorteile: Körperbewusstsein, tiefe Entspannung.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '38b',
-    category: 'relaxed',
-    title: 'Lachyoga Light',
-    description: 'Für ganze Klasse\n\n1. Steht im Kreis.\n2. Beginnt mit künstlichem Lachen "Ha ha ha".\n3. Macht dazu Bewegungen.\n4. Lachen wird ansteckend und echt.\n5. Verschiedene Lacharten ausprobieren.\n6. 3-4 Minuten lachen.\n7. Dann tiefes Atmen und entspannen.\n\nVorteile: Löst Anspannung, fördert Endorphine, macht Spaß!',
-    duration_minutes: 5,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '39b',
-    category: 'relaxed',
-    title: 'Achtsames Gehen im Raum',
-    description: 'Für ganze Klasse\n\n1. Alle gehen langsam durch den Raum.\n2. Konzentriert euch auf jeden Schritt.\n3. Spürt wie der Fuß den Boden berührt.\n4. Atmet bewusst beim Gehen.\n5. Kein Sprechen, nur Wahrnehmen.\n6. Nach 3 Minuten: noch langsamer.\n7. Bleibt dann stehen, spürt nach.\n\nVorteile: Achtsamkeit, Entschleunigung, Körperbewusstsein.',
-    duration_minutes: 5,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  {
-    id: '40b',
-    category: 'relaxed',
-    title: 'Energie-Ball weitergeben',
-    description: 'Für ganze Klasse\n\n1. Steht oder sitzt im Kreis.\n2. Stellt euch vor, ihr haltet einen Energieball.\n3. Erste Person "formt" den Ball zwischen den Händen.\n4. Gibt ihn mit einer Bewegung weiter.\n5. Nächste Person nimmt ihn auf, spürt ihn.\n6. So geht der Ball reihum.\n7. Am Ende: Ball gemeinsam "auflösen".\n\nVorteile: Imaginationsübung, Verbundenheit, spielerische Entspannung.',
-    duration_minutes: 4,
-    roles: ['teacher'],
-    is_group_exercise: true
-  },
-  
+    
   // Additional INDIVIDUAL exercises for variety
   {
     id: '14b',
@@ -415,33 +62,6 @@ export const exercises = [
     title: 'Wand-Sit (Wandsitzen)',
     description: '1. Stelle dich mit dem Rücken zur Wand.\n2. Rutsche mit dem Rücken an der Wand herunter.\n3. Beuge die Knie auf 90 Grad (wie auf einem Stuhl sitzend).\n4. Halte die Position 20-30 Sekunden.\n5. Pause 30 Sekunden.\n6. Wiederhole 3-4 Durchgänge.\n7. Steigere die Haltezeit langsam.\n\nVorteile: Stärkt Oberschenkelmuskulatur, Kraftausdauer.',
     duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '15b',
-    category: 'active',
-    title: 'Burpees (vereinfachte Version)',
-    description: '1. Stehe aufrecht.\n2. Gehe in die Hocke, Hände auf den Boden.\n3. Springe mit den Füßen nach hinten (Plank-Position).\n4. Optional: eine Liegestütze.\n5. Springe mit Füßen zurück zur Hocke.\n6. Springe hoch, Arme nach oben.\n7. 8-10 Wiederholungen, 3 Sätze.\n\nVorteile: Ganzkörpertraining, steigert Puls und Energie.',
-    duration_minutes: 5,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '22b',
-    category: 'relaxed',
-    title: 'Augenentspannung (Palmieren)',
-    description: '1. Setze dich bequem hin.\n2. Reibe deine Handflächen aneinander bis sie warm sind.\n3. Lege die warmen Handflächen sanft auf geschlossene Augen.\n4. Kein Druck, nur leichtes Auflegen.\n5. Genieße die Dunkelheit und Wärme.\n6. Atme ruhig für 2-3 Minuten.\n7. Nimm die Hände langsam weg, öffne die Augen.\n\nVorteile: Entspannt die Augen nach Bildschirmarbeit.',
-    duration_minutes: 4,
-    roles: ['individual', 'teacher'],
-    is_group_exercise: false
-  },
-  {
-    id: '23b',
-    category: 'relaxed',
-    title: 'Bodyscan Kurzversion',
-    description: '1. Lege dich auf den Rücken, Arme neben dem Körper.\n2. Schließe die Augen.\n3. Spüre bewusst deine Füße - 20 Sekunden.\n4. Wandere zu den Unterschenkeln, dann Oberschenkeln.\n5. Bauch, Brust, Rücken.\n6. Arme, Hände, Finger.\n7. Hals, Kopf, Gesicht - überall entspannen.\n\nVorteile: Tiefe Körperwahrnehmung, mentale Entspannung.',
-    duration_minutes: 6,
     roles: ['individual', 'teacher'],
     is_group_exercise: false
   },
@@ -456,15 +76,6 @@ export const exercises = [
     roles: ['teacher'],
     is_group_exercise: true
   },
-  {
-    id: '36a',
-    category: 'active',
-    title: 'Brückenbau Teamchallenge',
-    description: 'Für Teams zu 4-6 Personen\n\n1. Jedes Team bildet eine "Brücke" mit ihren Körpern.\n2. Beispiel: Alle in Plank nebeneinander.\n3. Oder: Kinder-Brücke (auf Händen/Füßen, Bauch nach oben).\n4. Ein leichter Gegenstand wird drüber balanciert.\n5. Haltet die Brücke 30 Sekunden.\n6. Welches Team hält am längsten?\n7. Verschiedene Brückenvarianten ausprobieren.\n\nVorteile: Kraft, Teamwork, Körperspannung, Koordination.',
-    duration_minutes: 6,
-    roles: ['teacher'],
-    is_group_exercise: true
-  }
 ];
 
 // Get exercises by category and role
