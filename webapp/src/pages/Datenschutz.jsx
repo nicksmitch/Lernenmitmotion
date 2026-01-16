@@ -41,8 +41,8 @@ export default function Datenschutz() {
 
       <p>
         <strong>Rechte der Nutzer:</strong><br />
-        Du hast das Recht auf Auskunft, Berichtigung oder Löschung
-        deiner personenbezogenen Daten.
+        Sie haben das Recht auf Auskunft, Berichtigung oder Löschung
+        Ihrer personenbezogenen Daten.
         Anfragen bitte per E-Mail.
       </p>
     </main>
