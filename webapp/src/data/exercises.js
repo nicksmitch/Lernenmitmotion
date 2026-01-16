@@ -10,7 +10,16 @@ export const exercises = [
     roles: ['individual', 'teacher'],
     is_group_exercise: false
   },
-
+{
+    id: '2',
+    category: 'active',
+    title: 'Powerrunde',
+    description: '1. Setze dich auf die vordere Stuhlkante.\n2. Stehe 8 mal auf und setze dich wieder hin.\n3. Boxe mit beiden Armen je 10 mal nach vorne in die Luft.\n4. Strecke deine Arme über den Kopf und führe sie über dem Kopf nach links und nach rechts.\n5. Strecke deine Finger aus und berühre jeden finger einzeln der Reihe nach mit dem Daumen.\n6. Setze dich gemütlich in deinen Stuhl, falte deine Hände ineinander und Atme 8 Mal tief durch die Nase ein und durch den Mund wieder aus.',
+    duration_minutes: 3,
+    roles: ['individual', 'teacher'],
+    is_group_exercise: false
+  },  
+  
   // INDIVIDUAL RELAXED EXERCISES
   {
     id: '11',
