@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../App';
-import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
@@ -11,11 +10,8 @@ import { toast } from 'sonner';
 import ExerciseModal from '../components/ExerciseModal';
 import RoleSelector from '../components/RoleSelector';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
 const Dashboard = () => {
-  const { user, setUser, logout } = useContext(AuthContext);
+  const { user, setUser, logout, getStats, updateStats } = useContext(AuthContext);
   const [stats, setStats] = useState(null);
   const [timerDuration, setTimerDuration] = useState(25);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -26,9 +22,13 @@ const Dashboard = () => {
   const [showExerciseModal, setShowExerciseModal] = useState(false);
   const [exerciseCategory, setExerciseCategory] = useState(null);
   const [showRoleSelector, setShowRoleSelector] = useState(false);
+  const [sessionStartTime, setSessionStartTime] = useState(null);
 
   useEffect(() => {
-    fetchStats();
+    // Load stats from localStorage
+    const localStats = getStats();
+    setStats(localStats);
+    setTimerDuration(localStats.last_timer_duration || 25);
   }, []);
 
   useEffect(() => {
@@ -37,8 +37,7 @@ const Dashboard = () => {
       interval = setInterval(() => {
         setTimeLeft(prev => {
           if (prev <= 1) {
-            setIsRunning(false);
-            toast.success('Lernphase abgeschlossen! Zeit für eine Pause.');
+            handleSessionComplete();
             return 0;
           }
           return prev - 1;
@@ -48,43 +47,33 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, [isRunning, isPaused, timeLeft]);
 
-  const fetchStats = async () => {
-    try {
-      const response = await axios.get(`${API}/stats`, {
-        withCredentials: true
-      });
-      setStats(response.data);
-      setTimerDuration(response.data.last_timer_duration);
-    } catch (error) {
-      console.error('Error fetching stats:', error);
-    }
+  const handleSessionComplete = () => {
+    setIsRunning(false);
+    
+    // Calculate study time and update stats
+    const studyMinutes = timerDuration;
+    const currentStats = getStats();
+    const updatedStats = updateStats({
+      total_study_minutes: currentStats.total_study_minutes + studyMinutes,
+      total_breaks: currentStats.total_breaks + breaksThisSession
+    });
+    setStats(updatedStats);
+    
+    toast.success('Lernphase abgeschlossen! Zeit für eine Pause.');
   };
 
-  const startTimer = async () => {
-    try {
-      const response = await axios.post(`${API}/sessions`, {
-        duration_minutes: timerDuration
-      }, {
-        withCredentials: true
-      });
-      
-      setCurrentSessionId(response.data.id);
-      setTimeLeft(timerDuration * 60);
-      setIsRunning(true);
-      setIsPaused(false);
-      setBreaksThisSession(0);
-      
-      await axios.put(`${API}/stats/timer`, {
-        duration_minutes: timerDuration
-      }, {
-        withCredentials: true
-      });
-      
-      toast.success('Timer gestartet!');
-    } catch (error) {
-      console.error('Error starting timer:', error);
-      toast.error('Fehler beim Starten des Timers');
-    }
+  const startTimer = () => {
+    setCurrentSessionId(`session_${Date.now()}`);
+    setTimeLeft(timerDuration * 60);
+    setIsRunning(true);
+    setIsPaused(false);
+    setBreaksThisSession(0);
+    setSessionStartTime(Date.now());
+    
+    // Save last timer duration
+    updateStats({ last_timer_duration: timerDuration });
+    
+    toast.success('Timer gestartet!');
   };
 
   const pauseTimer = () => {
@@ -92,29 +81,30 @@ const Dashboard = () => {
     toast.info(isPaused ? 'Timer fortgesetzt' : 'Timer pausiert');
   };
 
-  const stopTimer = async () => {
-    if (currentSessionId) {
-      try {
-        await axios.put(`${API}/sessions/${currentSessionId}`, {
-          status: 'completed',
-          breaks_taken: breaksThisSession
-        }, {
-          withCredentials: true
+  const stopTimer = () => {
+    if (currentSessionId && sessionStartTime) {
+      // Calculate actual study time (in minutes)
+      const elapsedSeconds = timerDuration * 60 - timeLeft;
+      const elapsedMinutes = Math.floor(elapsedSeconds / 60);
+      
+      if (elapsedMinutes > 0) {
+        const currentStats = getStats();
+        const updatedStats = updateStats({
+          total_study_minutes: currentStats.total_study_minutes + elapsedMinutes,
+          total_breaks: currentStats.total_breaks + breaksThisSession
         });
-        
-        setIsRunning(false);
-        setIsPaused(false);
-        setTimeLeft(0);
-        setCurrentSessionId(null);
-        setBreaksThisSession(0);
-        fetchStats();
-        
-        toast.success('Lernphase beendet!');
-      } catch (error) {
-        console.error('Error stopping timer:', error);
-        toast.error('Fehler beim Beenden des Timers');
+        setStats(updatedStats);
       }
     }
+    
+    setIsRunning(false);
+    setIsPaused(false);
+    setTimeLeft(0);
+    setCurrentSessionId(null);
+    setBreaksThisSession(0);
+    setSessionStartTime(null);
+    
+    toast.success('Lernphase beendet!');
   };
 
   const takeBreak = (category) => {
@@ -135,7 +125,7 @@ const Dashboard = () => {
   };
 
   const handleRoleChange = (newRole) => {
-    setUser({ ...user, role: newRole });
+    setUser({ role: newRole });
     setShowRoleSelector(false);
   };
 
@@ -163,13 +153,13 @@ const Dashboard = () => {
             </div>
             <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="hidden sm:flex flex-col items-end">
-                <span className="text-emerald-900 font-medium">{user?.name}</span>
+                <span className="text-emerald-900 font-medium">{user?.name || 'Gast'}</span>
                 <span className="text-xs text-emerald-600">{roleDisplay}</span>
               </div>
               <Avatar>
                 <AvatarImage src={user?.picture} />
                 <AvatarFallback className="bg-emerald-600 text-white">
-                  {user?.name?.charAt(0) || 'U'}
+                  {user?.name?.charAt(0) || 'G'}
                 </AvatarFallback>
               </Avatar>
               <Button 
@@ -187,6 +177,7 @@ const Dashboard = () => {
                 variant="ghost"
                 size="icon"
                 className="text-emerald-700 hover:text-emerald-900"
+                title="Daten zurücksetzen"
               >
                 <LogOut className="w-5 h-5" />
               </Button>
@@ -338,6 +329,9 @@ const Dashboard = () => {
                       <p className="text-sm text-emerald-700">
                         Aktuelle Session: {breaksThisSession} Pausen
                       </p>
+                    </div>
+                    <div className="pt-2 text-xs text-emerald-500">
+                      <p>💡 Daten werden lokal in deinem Browser gespeichert</p>
                     </div>
                   </>
                 ) : (

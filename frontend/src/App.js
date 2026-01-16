@@ -1,82 +1,97 @@
 import React, { useEffect, useState } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import axios from "axios";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import { Toaster } from "./components/ui/sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-// Auth Context
+// Auth Context - kept for future use
 export const AuthContext = React.createContext(null);
+
+// Local Storage Keys
+const STORAGE_KEYS = {
+  GUEST_USER: 'focusflow_guest_user',
+  STATS: 'focusflow_stats',
+  TIMER_DURATION: 'focusflow_timer_duration'
+};
+
+// Create or get guest user
+const getOrCreateGuestUser = () => {
+  const stored = localStorage.getItem(STORAGE_KEYS.GUEST_USER);
+  if (stored) {
+    return JSON.parse(stored);
+  }
+  
+  const guestUser = {
+    id: `guest_${Date.now()}`,
+    name: 'Gast',
+    email: null,
+    picture: null,
+    role: 'individual',
+    isGuest: true,
+    created_at: new Date().toISOString()
+  };
+  
+  localStorage.setItem(STORAGE_KEYS.GUEST_USER, JSON.stringify(guestUser));
+  return guestUser;
+};
+
+// Get or create stats
+const getOrCreateStats = () => {
+  const stored = localStorage.getItem(STORAGE_KEYS.STATS);
+  if (stored) {
+    return JSON.parse(stored);
+  }
+  
+  const initialStats = {
+    total_study_minutes: 0,
+    total_breaks: 0,
+    last_timer_duration: 25
+  };
+  
+  localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(initialStats));
+  return initialStats;
+};
 
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sessionProcessing, setSessionProcessing] = useState(false);
 
   useEffect(() => {
-    // Check for session_id in URL fragment
-    const hash = window.location.hash;
-    if (hash && hash.includes('session_id=')) {
-      const sessionId = hash.split('session_id=')[1].split('&')[0];
-      processSessionId(sessionId);
-      return;
-    }
-
-    // Check existing session
-    checkAuth();
+    // Initialize guest user
+    const guestUser = getOrCreateGuestUser();
+    setUser(guestUser);
+    setLoading(false);
   }, []);
 
-  const processSessionId = async (sessionId) => {
-    setSessionProcessing(true);
-    try {
-      const response = await axios.post(`${API}/auth/session`, {
-        session_id: sessionId
-      }, {
-        withCredentials: true
-      });
-
-      setUser(response.data.user);
-      
-      // Clean URL
-      window.history.replaceState(null, '', window.location.pathname);
-      window.location.href = '/dashboard';
-    } catch (error) {
-      console.error('Session processing error:', error);
-      setSessionProcessing(false);
-      setLoading(false);
-    }
+  const updateUser = (updates) => {
+    const updatedUser = { ...user, ...updates };
+    setUser(updatedUser);
+    localStorage.setItem(STORAGE_KEYS.GUEST_USER, JSON.stringify(updatedUser));
   };
 
-  const checkAuth = async () => {
-    try {
-      const response = await axios.get(`${API}/auth/me`, {
-        withCredentials: true
-      });
-      setUser(response.data);
-    } catch (error) {
-      setUser(null);
-    } finally {
-      setLoading(false);
-    }
+  const logout = () => {
+    // Clear local storage and reset to new guest
+    localStorage.removeItem(STORAGE_KEYS.GUEST_USER);
+    localStorage.removeItem(STORAGE_KEYS.STATS);
+    localStorage.removeItem(STORAGE_KEYS.TIMER_DURATION);
+    
+    const newGuestUser = getOrCreateGuestUser();
+    setUser(newGuestUser);
+    window.location.href = '/';
   };
 
-  const logout = async () => {
-    try {
-      await axios.post(`${API}/auth/logout`, {}, {
-        withCredentials: true
-      });
-      setUser(null);
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
+  // Helper functions for stats (accessible via context)
+  const getStats = () => getOrCreateStats();
+  
+  const updateStats = (updates) => {
+    const currentStats = getOrCreateStats();
+    const updatedStats = { ...currentStats, ...updates };
+    localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
+    return updatedStats;
   };
 
-  if (loading || sessionProcessing) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
         <div className="text-center">
@@ -88,12 +103,12 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{ user, setUser, logout }}>
+    <AuthContext.Provider value={{ user, setUser: updateUser, logout, getStats, updateStats }}>
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={user ? <Navigate to="/dashboard" /> : <LandingPage />} />
-            <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
         <Toaster position="top-right" />
