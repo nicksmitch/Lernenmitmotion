@@ -7,7 +7,7 @@ export default function Impressum() {
 
       <p>
         Nick Mitchell<br />
-        Weissenseer Weg 12, 10367 Berlin<br />
+        Weißenseer Weg 12, 10367 Berlin<br />
         Deutschland
       </p>
 
