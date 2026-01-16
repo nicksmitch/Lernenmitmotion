@@ -35,11 +35,11 @@ print('User ID: ' + userId);
 ## Step 2: Test Backend API
 ```bash
 # Test auth endpoint
-curl -X GET "https://focusflow-app-20.preview.emergentagent.com/api/auth/me" \
+curl -X GET "https://repo-connector-5.preview.emergentagent.com/api/auth/me" \
   -H "Authorization: Bearer YOUR_SESSION_TOKEN"
 
 # Test stats endpoint
-curl -X GET "https://focusflow-app-20.preview.emergentagent.com/api/stats" \
+curl -X GET "https://repo-connector-5.preview.emergentagent.com/api/stats" \
   -H "Authorization: Bearer YOUR_SESSION_TOKEN"
 ```
 
@@ -55,7 +55,7 @@ await page.context().addCookies([{
     "secure": true,
     "sameSite": "None"
 }]);
-await page.goto("https://focusflow-app-20.preview.emergentagent.com");
+await page.goto("https://repo-connector-5.preview.emergentagent.com");
 ```
 
 ## Important Notes
