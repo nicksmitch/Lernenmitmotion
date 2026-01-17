@@ -14,9 +14,10 @@ const LandingPage = () => {
             <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-emerald-900">FocusFlow</span>
+            <span className="text-2xl font-bold text-emerald-900">Move to Focus</span>
           </div>
-          <Button 
+
+          <Button
             data-testid="header-login-btn"
             onClick={() => navigate('/auth')}
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full"
@@ -30,15 +31,18 @@ const LandingPage = () => {
       <section className="container mx-auto px-4 py-12 sm:py-20 text-center">
         <div className="max-w-4xl mx-auto fade-in">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-emerald-900 mb-6 leading-tight">
-            Lernen mit Fokus und
+            Lernen mit Bewegung und
             <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
               gesunden Pausen
             </span>
           </h1>
+
           <p className="text-base sm:text-lg md:text-xl text-emerald-700 mb-8 sm:mb-12 max-w-2xl mx-auto">
-            FocusFlow hilft Studierenden und Schülern, produktiver zu lernen mit individuellen Lernphasen und wissenschaftlich fundierten Bewegungs- und Entspannungspausen.
+            Move to Focus hilft Studierenden und Schülern, fokussiert zu lernen – mit individuellen Lernphasen sowie
+            gezielten Bewegungs- und Entspannungspausen.
           </p>
-          <Button 
+
+          <Button
             data-testid="hero-get-started-btn"
             onClick={() => navigate('/auth')}
             size="lg"
@@ -52,25 +56,25 @@ const LandingPage = () => {
       {/* Features Section */}
       <section className="container mx-auto px-4 py-12 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <FeatureCard 
+          <FeatureCard
             icon={<Timer className="w-8 h-8" />}
             title="Individueller Timer"
-            description="Stelle deine gewünschte Lerndauer selbst ein und arbeite in deinem eigenen Rhythmus."
+            description="Stelle deine Lernzeit flexibel ein und arbeite in deinem eigenen Rhythmus."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Coffee className="w-8 h-8" />}
             title="Aktive Pausen"
-            description="Bewegungsübungen von 3-7 Minuten, um deinen Körper zu aktivieren und Verspannungen zu lösen."
+            description="Kurze Bewegungsübungen (3–7 Minuten), um Energie zu tanken und Verspannungen zu lösen."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Brain className="w-8 h-8" />}
             title="Entspannungspausen"
-            description="Meditations- und Atemübungen für mentale Erholung und bessere Konzentration."
+            description="Atem- und Entspannungsübungen für mentale Erholung und bessere Konzentration."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<TrendingUp className="w-8 h-8" />}
             title="Statistiken"
-            description="Verfolge deine Lernzeit und Pausen, um deine Produktivität zu optimieren."
+            description="Behalte Lernzeit und Pausen im Blick, um deine Routine nachhaltig zu verbessern."
           />
         </div>
       </section>
@@ -83,9 +87,9 @@ const LandingPage = () => {
             Bereit für produktiveres Lernen?
           </h2>
           <p className="text-lg text-emerald-700 mb-8">
-            Melde dich jetzt kostenlos an und starte deine erste Lernphase.
+            Erstelle kostenlos ein Konto und starte deine erste Lernphase mit passenden Pausen.
           </p>
-          <Button 
+          <Button
             data-testid="cta-start-btn"
             onClick={() => navigate('/auth')}
             size="lg"
@@ -99,7 +103,7 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-emerald-600">
-          <span>© 2025 FocusFlow - Lernen mit Fokus und Balance</span>
+          <span>© 2025 Move to Focus – Lernen mit Bewegung & Balance</span>
           <span className="hidden sm:inline">•</span>
           <div className="flex gap-4">
             <button
