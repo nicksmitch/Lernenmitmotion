@@ -12,14 +12,26 @@ export default function Impressum() {
       <p>Angaben gemäß § 5 TMG</p>
 
       <p>
-        <strong>Nick Mitchell</strong><br />
+        <strong>Nick Stuart Mitchell</strong><br />
         Weißenseer Weg 12<br />
         10367 Berlin<br />
         Deutschland
       </p>
 
       <p>
-        <strong>E-Mail:</strong> nick9mitchell7@googlemail.com
+        <strong>Kontakt</strong><br />
+        Telefon: {0163 7022441}<br />
+        E-Mail:{" "}
+        <a href="mailto:Nick9mitchell7@googlemail.com">
+          Nick9mitchell7@googlemail.com
+        </a>
+      </p>
+
+      <p>
+        <strong>Redaktionell verantwortlich</strong><br />
+        Nick Mitchell<br />
+        Weißenseer Weg 12<br />
+        10367 Berlin
       </p>
 
       <p>
