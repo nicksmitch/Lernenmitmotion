@@ -19,7 +19,7 @@ const LandingPage = () => {
             <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-emerald-900">FocusFlow</span>
+            <span className="text-2xl font-bold text-emerald-900">Move2Focus</span>
           </div>
           <Button 
             data-testid="header-start-btn"
@@ -41,7 +41,7 @@ const LandingPage = () => {
             </span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-emerald-700 mb-8 sm:mb-12 max-w-2xl mx-auto">
-            FocusFlow hilft Studierenden und Schülern, produktiver zu lernen mit individuellen Lernphasen und wissenschaftlich fundierten Bewegungs- und Entspannungspausen.
+            Move2Focus hilft Studierenden und Schülern, produktiver zu lernen – mit individuellen Lernphasen und wissenschaftlich fundierten Bewegungs- und Entspannungspausen.
           </p>
           <Button 
             data-testid="hero-get-started-btn"
@@ -65,7 +65,7 @@ const LandingPage = () => {
           <FeatureCard 
             icon={<Coffee className="w-8 h-8" />}
             title="Aktive Pausen"
-            description="Bewegungsübungen von 3-7 Minuten, um deinen Körper zu aktivieren und Verspannungen zu lösen."
+            description="Bewegungsübungen von 3–7 Minuten, um deinen Körper zu aktivieren und Verspannungen zu lösen."
           />
           <FeatureCard 
             icon={<Brain className="w-8 h-8" />}
@@ -133,7 +133,7 @@ const LandingPage = () => {
 
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center text-emerald-600">
-        <p>&copy; 2025 FocusFlow. Alle Rechte vorbehalten.</p>
+        <p>&copy; {new Date().getFullYear()} Move2Focus. Alle Rechte vorbehalten.</p>
       </footer>
     </div>
   );
