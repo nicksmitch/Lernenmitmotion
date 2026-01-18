@@ -91,7 +91,7 @@ function AuthPage() {
             <div className="bg-emerald-500 p-2 rounded-lg">
               <Timer className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-emerald-900">FocusFlow</h1>
+            <h1 className="text-3xl font-bold text-emerald-900">Move2Focus</h1>
           </div>
           <p className="text-emerald-600">
             {isLogin ? 'Willkommen zurück!' : 'Erstelle deinen Account'}
