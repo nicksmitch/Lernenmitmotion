@@ -14,7 +14,7 @@ const LandingPage = () => {
             <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-emerald-900">Move to Focus</span>
+            <span className="text-2xl font-bold text-emerald-900">Move2Focus</span>
           </div>
 
           <Button
