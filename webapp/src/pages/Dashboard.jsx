@@ -11,7 +11,6 @@ import ExerciseModal from '../components/ExerciseModal';
 import RoleSelector from '../components/RoleSelector';
 import SpotifyPlayer from '../components/SpotifyPlayerCompact';
 import TimerCompleteModal from '../components/TimerCompleteModal';
-import { Link } from "react-router-dom";
 
 const STORAGE_KEYS = {
   STATS: 'focusflow_stats',
@@ -79,8 +78,10 @@ const Dashboard = () => {
     setIsRunning(true);
     setIsPaused(false);
     setBreaksThisSession(0);
+    
     const updatedStats = { ...stats, lastTimerDuration: timerDuration };
     saveStats(updatedStats);
+    
     toast.success('Timer gestartet!');
   };
 
@@ -91,20 +92,24 @@ const Dashboard = () => {
 
   const stopTimer = () => {
     if (isRunning || timeLeft === 0) {
+      // Calculate actual studied time
       const actualStudiedTime = timeLeft === 0 
-        ? timerDuration 
-        : Math.floor((timerDuration * 60 - timeLeft) / 60); 
+        ? timerDuration // Full duration if timer completed
+        : Math.floor((timerDuration * 60 - timeLeft) / 60); // Partial if stopped early
+      
       const updatedStats = {
         ...stats,
         totalStudyMinutes: stats.totalStudyMinutes + actualStudiedTime,
         totalBreaks: stats.totalBreaks + breaksThisSession
       };
       saveStats(updatedStats);
+      
       setIsRunning(false);
       setIsPaused(false);
       setTimeLeft(0);
       setBreaksThisSession(0);
       setShowTimerComplete(false);
+      
       toast.success(`Session beendet! +${actualStudiedTime} Minuten`);
     }
   };
@@ -118,17 +123,22 @@ const Dashboard = () => {
   };
 
   const onBreakComplete = () => {
+    // Increment breaks counter
     const newBreaksCount = breaksThisSession + 1;
     setBreaksThisSession(newBreaksCount);
     setShowExerciseModal(false);
+    
+    // Update total stats immediately and save
     if (stats) {
       const updatedStats = {
         ...stats,
         totalBreaks: (stats.totalBreaks || 0) + 1
       };
       saveStats(updatedStats);
+      // Force re-render by setting stats
       setStats(updatedStats);
     }
+    
     if (isRunning && timeLeft > 0) {
       setIsPaused(false);
       toast.success('Pause beendet! Weiter geht\'s!');
@@ -138,19 +148,23 @@ const Dashboard = () => {
   };
 
   const handleTimerCompleteAction = (action) => {
+    // Save completed session stats
     const updatedStats = {
       ...stats,
       totalStudyMinutes: stats.totalStudyMinutes + timerDuration,
       totalBreaks: stats.totalBreaks + breaksThisSession
     };
     saveStats(updatedStats);
+    
     setShowTimerComplete(false);
+    
     if (action === 'continue') {
       toast.info('Session beendet! Starte einen neuen Timer wenn du weitermachen möchtest.');
       setTimeLeft(0);
       setIsRunning(false);
       setBreaksThisSession(0);
     } else {
+      // Take break
       takeBreak(action);
     }
   };
@@ -170,14 +184,222 @@ const Dashboard = () => {
   const roleDisplay = user?.role === 'teacher' ? 'Lehrkraft' : 'Einzelnutzer';
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
       {/* Header */}
       <header className="glass border-b border-emerald-100">
-        {/* ... dein Header bleibt unverändert ... */}
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
+                <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <span className="text-xl sm:text-2xl font-bold text-emerald-900">Move2Focus</span>
+            </div>
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="hidden sm:flex flex-col items-end">
+                <span className="text-emerald-900 font-medium">{user?.name}</span>
+                <span className="text-xs text-emerald-600">{roleDisplay}</span>
+              </div>
+              <Avatar>
+                <AvatarFallback className="bg-emerald-600 text-white">
+                  {user?.name?.charAt(0) || 'U'}
+                </AvatarFallback>
+              </Avatar>
+              <Button 
+                data-testid="settings-btn"
+                onClick={() => setShowRoleSelector(!showRoleSelector)}
+                variant="ghost"
+                size="icon"
+                className="text-emerald-700 hover:text-emerald-900"
+              >
+                <Settings className="w-5 h-5" />
+              </Button>
+              <Button 
+                data-testid="logout-btn"
+                onClick={logout}
+                variant="ghost"
+                size="icon"
+                className="text-emerald-700 hover:text-emerald-900"
+              >
+                <LogOut className="w-5 h-5" />
+              </Button>
+            </div>
+          </div>
+        </div>
       </header>
 
       <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
-        {/* ... dein kompletter Dashboard-Inhalt ... */}
+        {showRoleSelector && (
+          <div className="mb-6 sm:mb-8">
+            <RoleSelector 
+              currentRole={user?.role || 'individual'}
+              onRoleChange={handleRoleChange}
+            />
+          </div>
+        )}
+
+        <div className="grid lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          {/* Timer & Music Section */}
+          <div className="lg:col-span-3 space-y-4 sm:space-y-6">
+            {/* Spotify Player - Above Timer */}
+            <SpotifyPlayer />
+            
+            {/* Timer Section */}
+            <div className="space-y-4 sm:space-y-6">
+            <Card data-testid="timer-card" className="glass border-emerald-200">
+              <CardHeader>
+                <CardTitle className="text-xl sm:text-2xl text-emerald-900">Lern-Timer</CardTitle>
+                <CardDescription className="text-sm sm:text-base">Stelle deine gewünschte Lerndauer ein</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {!isRunning ? (
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex justify-between items-center mb-4">
+                        <label className="text-lg font-medium text-emerald-900">Dauer: {timerDuration} Minuten</label>
+                      </div>
+                      <Slider 
+                        data-testid="timer-duration-slider"
+                        value={[timerDuration]}
+                        onValueChange={(value) => setTimerDuration(value[0])}
+                        min={5}
+                        max={120}
+                        step={5}
+                        className="w-full"
+                      />
+                    </div>
+                    <Button 
+                      data-testid="start-timer-btn"
+                      onClick={startTimer}
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg rounded-xl"
+                    >
+                      <Play className="w-6 h-6 mr-2" />
+                      Timer starten
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="text-center">
+                      <div className="text-5xl sm:text-6xl font-bold text-emerald-900 mb-4">
+                        {formatTime(timeLeft)}
+                      </div>
+                      <Progress value={progress} className="h-2 sm:h-3 mb-4" />
+                      <p className="text-sm sm:text-base text-emerald-700">
+                        {Math.floor(timeLeft / 60)} Minuten verbleibend
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                      <Button 
+                        data-testid="pause-resume-btn"
+                        onClick={pauseTimer}
+                        variant="outline"
+                        className="py-4 sm:py-6 text-base sm:text-lg border-emerald-300 touch-manipulation"
+                      >
+                        <Pause className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                        {isPaused ? 'Fortsetzen' : 'Pausieren'}
+                      </Button>
+                      <Button 
+                        data-testid="stop-timer-btn"
+                        onClick={stopTimer}
+                        variant="destructive"
+                        className="py-4 sm:py-6 text-base sm:text-lg touch-manipulation"
+                      >
+                        Beenden
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Break Options */}
+            <Card className="glass border-emerald-200">
+              <CardHeader>
+                <CardTitle className="text-xl sm:text-2xl text-emerald-900">Pause benötigt?</CardTitle>
+                <CardDescription className="text-sm sm:text-base">
+                  {user?.role === 'teacher' 
+                    ? 'Wähle zwischen individuellen oder Gruppen-Übungen' 
+                    : 'Wähle zwischen aktiven oder entspannenden Übungen'
+                  }
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <Button 
+                  data-testid="active-break-btn"
+                  onClick={() => takeBreak('active')}
+                  className="h-28 sm:h-32 bg-gradient-to-br from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 active:from-orange-700 active:to-red-700 text-white flex-col space-y-2 rounded-xl touch-manipulation"
+                >
+                  <Coffee className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <span className="text-base sm:text-lg font-semibold">Aktive Pause</span>
+                  <span className="text-xs sm:text-sm opacity-90">
+                    {user?.role === 'teacher' ? 'Bewegung & Gruppenspiele' : 'Bewegung & Energie'}
+                  </span>
+                </Button>
+                <Button 
+                  data-testid="relaxed-break-btn"
+                  onClick={() => takeBreak('relaxed')}
+                  className="h-28 sm:h-32 bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 active:from-blue-700 active:to-purple-700 text-white flex-col space-y-2 rounded-xl touch-manipulation"
+                >
+                  <Heart className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <span className="text-base sm:text-lg font-semibold">Entspannende Pause</span>
+                  <span className="text-xs sm:text-sm opacity-90">
+                    {user?.role === 'teacher' ? 'Gruppen-Entspannung' : 'Meditation & Ruhe'}
+                  </span>
+                </Button>
+              </CardContent>
+            </Card>
+            </div>
+          </div>
+
+          {/* Stats Section - Right Sidebar */}
+          <div className="space-y-6">
+            <Card data-testid="stats-card" className="glass border-emerald-200">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2 text-emerald-900">
+                  <TrendingUp className="w-5 h-5" />
+                  <span>Deine Statistiken</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {stats ? (
+                  <>
+                    <StatItem 
+                      icon={<Clock className="w-6 h-6 text-emerald-600" />}
+                      label="Gesamt Lernzeit"
+                      value={`${Math.floor(stats.totalStudyMinutes / 60)}h ${stats.totalStudyMinutes % 60}m`}
+                    />
+                    <StatItem 
+                      icon={<Coffee className="w-6 h-6 text-orange-600" />}
+                      label="Pausen genommen"
+                      value={stats.totalBreaks}
+                    />
+                    <div className="pt-4 border-t border-emerald-200">
+                      <p className="text-sm text-emerald-700">
+                        Aktuelle Session: {breaksThisSession} Pausen
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center text-emerald-600">Lädt...</div>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card className="glass border-emerald-200 bg-gradient-to-br from-emerald-100 to-teal-100">
+              <CardContent className="pt-6">
+                <h3 className="font-semibold text-emerald-900 mb-2">
+                  {user?.role === 'teacher' ? 'Tipp für Lehrkräfte' : 'Tipp des Tages'}
+                </h3>
+                <p className="text-sm text-emerald-700">
+                  {user?.role === 'teacher' 
+                    ? 'Gruppenübungen am Smartboard fördern Gemeinschaftsgefühl und machen mehr Spaß! Probiere die Partner-Koordinationsspiele aus.' 
+                    : 'Regelmäßige Pausen verbessern deine Konzentration und Produktivität. Versuche alle 25-50 Minuten eine kurze Pause einzulegen!'
+                  }
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
 
       {/* Timer Complete Modal */}
@@ -197,22 +419,20 @@ const Dashboard = () => {
           onComplete={onBreakComplete}
         />
       )}
-
-      {/* 🧩 Globaler Footer */}
-      <footer className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-sm border-t border-emerald-100 py-3 z-50">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 px-4 text-sm text-emerald-700">
-          <div className="flex gap-4">
-            <Link to="/impressum" className="hover:text-emerald-900 underline transition">Impressum</Link>
-            <span>•</span>
-            <Link to="/datenschutz" className="hover:text-emerald-900 underline transition">Datenschutz</Link>
-          </div>
-          <p className="text-xs sm:text-sm text-emerald-600">
-            © {new Date().getFullYear()} Move2Focus – Lernen mit Bewegung & Balance
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };
+
+const StatItem = ({ icon, label, value }) => (
+  <div className="flex items-center justify-between">
+    <div className="flex items-center space-x-3">
+      <div className="p-2 bg-emerald-100 rounded-lg">
+        {icon}
+      </div>
+      <span className="text-emerald-700">{label}</span>
+    </div>
+    <span className="text-2xl font-bold text-emerald-900">{value}</span>
+  </div>
+);
 
 export default Dashboard;
