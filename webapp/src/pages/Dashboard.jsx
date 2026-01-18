@@ -193,7 +193,7 @@ const Dashboard = () => {
               <div className="w-9 h-9 sm:w-10 sm:h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
                 <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-xl sm:text-2xl font-bold text-emerald-900">FocusFlow</span>
+              <span className="text-xl sm:text-2xl font-bold text-emerald-900">Move2Focus</span>
             </div>
             <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="hidden sm:flex flex-col items-end">
