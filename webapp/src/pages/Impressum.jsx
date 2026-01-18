@@ -29,7 +29,7 @@ export default function Impressum() {
               Kontakt
             </h2>
             <p className="leading-relaxed">
-              Telefon: <span className="text-emerald-700">[Telefonnummer]</span><br />
+              Telefon: <span className="text-emerald-700">0163 7022441</span><br />
               E-Mail:{" "}
               <a
                 href="mailto:Nick9mitchell7@googlemail.com"
